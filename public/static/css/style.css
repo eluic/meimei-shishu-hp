@@ -513,22 +513,16 @@ h1, h2, h3, h4, h5, h6 {
 .hero-content { text-align: center; color: var(--color-white); }
 
 .hero-catch {
-  writing-mode: vertical-rl;
-  -webkit-writing-mode: vertical-rl;
-  text-orientation: mixed;
-  display: inline-flex;
-  flex-direction: row-reverse;
-  gap: 1.2em;
   font-family: var(--font-serif);
-  font-size: 1.8rem;
-  font-weight: 400;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2.2;
   letter-spacing: 0.15em;
   text-shadow: 0 2px 30px rgba(0,0,0,0.25);
   margin-bottom: 48px;
 }
 
 .hero-catch__line {
-  white-space: nowrap;
   display: block;
 }
 
@@ -536,7 +530,6 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   gap: 16px;
   justify-content: center;
-  writing-mode: horizontal-tb;
 }
 
 /* Hero buttons — brand color outline with backdrop */
@@ -606,8 +599,8 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .hero { min-height: 100vh; }
   .hero-catch {
-    font-size: 1.3rem;
-    letter-spacing: 0.12em;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
   }
   .hero-buttons { flex-direction: column; align-items: center; }
   .hero-btn-primary,
