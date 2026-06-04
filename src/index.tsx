@@ -6,19 +6,8 @@ const app = new Hono()
 // ============================================================
 // 〜NOFY〜 命名刺繍ブランド 公式ホームページ
 // Cloudflare Pages + Hono
+// Design: いいとき刺繍 inspired layout + NOFY brand colors aggressive
 // ============================================================
-
-// Brand Colors extracted from NOFY logo
-const COLORS = {
-  main: '#c03020',      // 赤（ロゴメインカラー）
-  accent: '#3060b0',    // 青（ロゴブルー）
-  gold: '#d4a830',      // 金色（ロゴゴールド）
-  teal: '#50a090',      // ティール（ロゴ緑系）
-  base: '#faf7f2',      // オフホワイト背景
-  text: '#1a2332',      // テキストカラー
-  textLight: '#555555',
-  white: '#ffffff',
-}
 
 // ============================================================
 // Shared HTML Components
@@ -41,7 +30,7 @@ const headMeta = (title: string, description: string, path: string = '/') => `
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -68,6 +57,8 @@ const headMeta = (title: string, description: string, path: string = '/') => `
 }
 </script>
 `
+
+const instagramSvg = (size: number = 18) => `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>`
 
 const header = (currentPage: string = '') => `
 <header id="site-header">
@@ -140,14 +131,14 @@ const footer = () => `
         <p><i data-lucide="mail"></i> nofy.2986@gmail.com</p>
         <div class="footer-social">
           <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            ${instagramSvg(16)}
           </a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025 〜NOFY〜 All Rights Reserved.</p>
-      <p class="footer-note">※注文後のやり取りはInstagram DMにて行います</p>
+      <p class="footer-note">※ ご注文後のやり取りはInstagram DMにて行います</p>
     </div>
   </div>
 </footer>
@@ -188,6 +179,9 @@ const wrapPage = (head: string, headerHtml: string, body: string, footerHtml: st
 </html>
 `
 
+const divider = () => `<div class="divider"><span class="divider-icon">◇</span></div>`
+const dividerLine = () => `<div class="divider-line"></div>`
+
 // ============================================================
 // Products Data
 // ============================================================
@@ -206,10 +200,11 @@ const products = [
 
 // ============================================================
 // PAGE: トップページ (front-page)
+// New layout: Hero → Brand Message → おすすめ → NEW → Concept Gallery → Products → Instagram → CTA → Footer
 // ============================================================
 app.get('/', (c) => {
   const body = `
-  <!-- Hero Section -->
+  <!-- 1. Hero Section -->
   <section id="hero-section" class="hero">
     <div class="hero-slider">
       <div class="hero-slide active" style="background-image: url('/static/images/hero/hero-01.jpg')"></div>
@@ -220,8 +215,8 @@ app.get('/', (c) => {
       <div class="hero-content">
         <p class="hero-catch vertical-text">ひとつひとつの命に、<br>特別な想いを込めて。</p>
         <div class="hero-buttons">
-          <a href="/products" class="btn btn-primary">商品を見る</a>
-          <a href="/order-flow" class="btn btn-outline">オーダーの流れ</a>
+          <a href="/products" class="btn btn-outline">商品を見る</a>
+          <a href="/order-flow" class="btn btn-outline-white">オーダーの流れ</a>
         </div>
       </div>
     </div>
@@ -232,27 +227,83 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- Concept Section -->
-  <section id="concept-section" class="section concept-section">
+  <!-- 2. Brand Message Section — Poetic, centered, dividers -->
+  <section class="brand-message-section">
+    <div class="brand-message-inner">
+      ${divider()}
+      <div class="brand-message-text">
+        <p>お子さんが誕生してから、<br>初めて贈られる特別な名前。</p>
+        <p>その名前に込められた、<br>ご家族の愛と願いを<br>一針一針、丁寧に刺繍します。</p>
+        <p>紙では残せない想いを、<br>沖縄の美しい彩りとともに、<br>世界にひとつだけの作品として。</p>
+      </div>
+      ${divider()}
+    </div>
+  </section>
+
+  <!-- 3. おすすめ Pickup — Large photo + "\ おすすめ /" label -->
+  <section class="pickup-section">
+    <div class="pickup-inner">
+      <p class="pickup-label">\\ おすすめ /</p>
+      ${dividerLine()}
+      <a href="/products/bingata-red" class="pickup-image">
+        <img src="/static/images/products/bingata-red.jpg" alt="紅型 赤 - おすすめ商品" loading="lazy">
+      </a>
+      <h3 class="pickup-name">命名刺繍 紅型 赤</h3>
+      <p class="pickup-desc">鮮やかな紅型柄の赤い帯を使用した、NOFYの代表作。<br class="pc-only">沖縄の伝統美が映える、華やかで格調高い命名刺繍です。</p>
+      <a href="/products/bingata-red" class="btn btn-outline-brand">詳しく見る</a>
+    </div>
+  </section>
+
+  <!-- 4. NEW Pickup — Large photo + "\ NEW /" label -->
+  <section class="pickup-section alt-bg">
+    <div class="pickup-inner">
+      <p class="pickup-label">\\ NEW /</p>
+      ${dividerLine()}
+      <a href="/products/sakura-navy" class="pickup-image">
+        <img src="/static/images/products/sakura-navy.jpg" alt="桜 ネイビー - 新商品" loading="lazy">
+      </a>
+      <h3 class="pickup-name">命名刺繍 桜 ネイビー</h3>
+      <p class="pickup-desc">桜柄のネイビー帯を使った新作。<br class="pc-only">落ち着きと華やかさを兼ね備えた、上品なデザインです。</p>
+      <a href="/products/sakura-navy" class="btn btn-outline-brand">詳しく見る</a>
+    </div>
+  </section>
+
+  <!-- 5. Concept Gallery — 4 photos with poetic captions -->
+  <section class="concept-gallery-section">
     <div class="container">
-      <div class="concept-inner">
-        <div class="concept-logo">
-          <img src="/static/images/logo/logo.png" alt="〜NOFY〜" loading="lazy">
+      <h2 class="section-title center"><span class="title-en">Concept</span>想いを、刺繍に。</h2>
+      ${dividerLine()}
+      <div class="concept-gallery-grid">
+        <div class="concept-gallery-item">
+          <div class="cg-image">
+            <img src="/static/images/products/bingata-blue1.jpg" alt="沖縄の彩り" loading="lazy">
+          </div>
+          <p class="concept-gallery-caption">沖縄の彩りを、<br>命名の祝いに</p>
         </div>
-        <div class="concept-text">
-          <h2 class="section-title"><span class="title-en">Concept</span>想いを、刺繍に。</h2>
-          <p class="concept-lead">NOFYでは、お子さまの誕生というかけがえのない瞬間を、<br class="pc-only">世界にひとつだけの命名刺繍として形に残します。</p>
-          <p>沖縄の伝統や彩りを大切にしながら、紅型や着物帯など特別な生地を使用し、心を込めて丁寧に制作しています。</p>
-          <p class="concept-quote">「生まれてきてくれてありがとう」<br>「これからの人生が幸せでありますように」</p>
-          <p>そんなご家族の願いや愛情を、一針一針に込めてお届けします。</p>
-          <a href="/about" class="btn btn-text">ブランドストーリーを見る <i data-lucide="arrow-right"></i></a>
+        <div class="concept-gallery-item">
+          <div class="cg-image">
+            <img src="/static/images/products/bingata-pink.jpg" alt="紅型に込めた願い" loading="lazy">
+          </div>
+          <p class="concept-gallery-caption">紅型に込めた、<br>家族の願い</p>
+        </div>
+        <div class="concept-gallery-item">
+          <div class="cg-image">
+            <img src="/static/images/products/sakura-pink.jpg" alt="世界にひとつだけ" loading="lazy">
+          </div>
+          <p class="concept-gallery-caption">世界にひとつだけの、<br>刺繍の物語</p>
+        </div>
+        <div class="concept-gallery-item">
+          <div class="cg-image">
+            <img src="/static/images/products/sakura-white.jpg" alt="一針一針に想いを" loading="lazy">
+          </div>
+          <p class="concept-gallery-caption">一針一針に、<br>想いを込めて</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Products Section -->
-  <section id="products-section" class="section products-section">
+  <!-- 6. Products Grid -->
+  <section id="products-section" class="section">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Products</span>命名刺繍ラインナップ</h2>
       <p class="section-subtitle">沖縄の伝統紅型や桜柄など、特別な生地を使用した命名刺繍をお作りします。</p>
@@ -270,33 +321,32 @@ app.get('/', (c) => {
         `).join('')}
       </div>
       <div class="section-cta">
-        <a href="/products" class="btn btn-primary">すべての商品を見る</a>
+        <a href="/products" class="btn btn-outline-brand">すべての商品を見る</a>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Section -->
-  <section id="gallery-section" class="section gallery-section">
+  <!-- 7. Instagram Section -->
+  <section class="instagram-section">
     <div class="container">
-      <h2 class="section-title center"><span class="title-en">Gallery</span>制作実績</h2>
-      <p class="section-subtitle">お客さまにお届けした、世界にひとつだけの命名刺繍。</p>
-      <div class="gallery-scroll">
-        ${products.slice(0, 5).map(p => `
-        <div class="gallery-scroll-item">
-          <img src="${p.image}" alt="${p.name} 制作実績" loading="lazy">
+      <div class="instagram-icon">${instagramSvg(32)}</div>
+      <p class="instagram-handle"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">@nofy_okinawa</a></p>
+      <p class="instagram-desc">NOFYの最新作品や制作の様子をInstagramで発信しています。</p>
+      <div class="instagram-grid">
+        ${products.slice(0, 4).map(p => `
+        <div class="instagram-item">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
         </div>
         `).join('')}
       </div>
-      <div class="section-cta">
-        <a href="/gallery" class="btn btn-outline-dark">制作実績をもっと見る</a>
-      </div>
     </div>
   </section>
 
-  <!-- Pricing Section -->
+  <!-- 8. Pricing Section -->
   <section id="pricing-section" class="section pricing-section">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Price</span>料金プラン</h2>
+      ${dividerLine()}
       <div class="pricing-grid">
         <div class="pricing-card">
           <div class="pricing-badge">PLAN 1</div>
@@ -309,7 +359,7 @@ app.get('/', (c) => {
             <li><i data-lucide="check"></i>生年月日</li>
             <li><i data-lucide="check"></i>額縁付き</li>
           </ul>
-          <a href="/contact" class="btn btn-primary">注文する</a>
+          <a href="/contact" class="btn btn-outline-brand btn-block">注文する</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">PLAN 2<span class="popular">人気</span></div>
@@ -324,7 +374,7 @@ app.get('/', (c) => {
             <li><i data-lucide="check"></i>体重</li>
             <li><i data-lucide="check"></i>額縁付き</li>
           </ul>
-          <a href="/contact" class="btn btn-primary">注文する</a>
+          <a href="/contact" class="btn btn-primary btn-block">注文する</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-badge">PLAN 3</div>
@@ -340,21 +390,22 @@ app.get('/', (c) => {
             <li><i data-lucide="check"></i>ご両親のお名前</li>
             <li><i data-lucide="check"></i>額縁付き</li>
           </ul>
-          <a href="/contact" class="btn btn-primary">注文する</a>
+          <a href="/contact" class="btn btn-outline-brand btn-block">注文する</a>
         </div>
       </div>
       <p class="pricing-note">※ カラー変更 +500円〜 / 追加文字 5文字以上で料金加算あり</p>
     </div>
   </section>
 
-  <!-- Voice Section -->
+  <!-- 9. Voice Section -->
   <section id="voice-section" class="section voice-section">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Voice</span>お客様の声</h2>
+      ${dividerLine()}
       <div class="voice-grid">
         <div class="voice-card">
-          <!-- ※差し替え予定：お客様写真 -->
           <div class="voice-avatar">
+            <!-- ※差し替え予定：お客様写真 -->
             <img src="https://placehold.jp/24/cccccc/ffffff/400x400.png?text=Customer+Photo" alt="お客様" loading="lazy">
           </div>
           <div class="voice-content">
@@ -364,8 +415,8 @@ app.get('/', (c) => {
           </div>
         </div>
         <div class="voice-card">
-          <!-- ※差し替え予定：お客様写真 -->
           <div class="voice-avatar">
+            <!-- ※差し替え予定：お客様写真 -->
             <img src="https://placehold.jp/24/cccccc/ffffff/400x400.png?text=Customer+Photo" alt="お客様" loading="lazy">
           </div>
           <div class="voice-content">
@@ -375,8 +426,8 @@ app.get('/', (c) => {
           </div>
         </div>
         <div class="voice-card">
-          <!-- ※差し替え予定：お客様写真 -->
           <div class="voice-avatar">
+            <!-- ※差し替え予定：お客様写真 -->
             <img src="https://placehold.jp/24/cccccc/ffffff/400x400.png?text=Customer+Photo" alt="お客様" loading="lazy">
           </div>
           <div class="voice-content">
@@ -389,8 +440,8 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section id="cta-section" class="section cta-section">
+  <!-- 10. CTA Section -->
+  <section id="cta-section" class="cta-section">
     <div class="container">
       <div class="cta-inner">
         <h2>大切な命の誕生を、<br>特別な刺繍で残しませんか？</h2>
@@ -450,6 +501,7 @@ app.get('/about', (c) => {
   <section class="section about-values">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Our Values</span>NOFYのこだわり</h2>
+      ${dividerLine()}
       <div class="values-grid">
         <div class="value-card">
           <div class="value-icon"><i data-lucide="heart"></i></div>
@@ -479,6 +531,7 @@ app.get('/about', (c) => {
   <section class="section about-process">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Process</span>制作の様子</h2>
+      ${dividerLine()}
       <div class="process-gallery">
         <!-- ※差し替え予定：制作風景写真 -->
         <div class="process-item">
@@ -502,7 +555,7 @@ app.get('/about', (c) => {
   </section>
 
   <!-- CTA -->
-  <section class="section cta-section">
+  <section class="cta-section">
     <div class="container">
       <div class="cta-inner">
         <h2>世界にひとつだけの命名刺繍を、<br>大切な方へ贈りませんか？</h2>
@@ -710,6 +763,7 @@ app.get('/products/:id', (c) => {
       ${relatedProducts.length > 0 ? `
       <div class="related-products">
         <h2 class="section-title"><span class="title-en">Related</span>関連商品</h2>
+        ${dividerLine()}
         <div class="products-grid">
           ${relatedProducts.map(p => `
           <a href="/products/${p.id}" class="product-card">
@@ -957,7 +1011,7 @@ app.get('/faq', (c) => {
 
       <div class="faq-cta">
         <p>ご質問が見つからない場合は、お気軽にお問い合わせください。</p>
-        <a href="/contact" class="btn btn-primary">お問い合わせ</a>
+        <a href="/contact" class="btn btn-outline-brand">お問い合わせ</a>
       </div>
     </div>
   </section>
@@ -1095,7 +1149,7 @@ app.get('/contact', (c) => {
         <h3>その他のお問い合わせ方法</h3>
         <div class="contact-methods">
           <div class="contact-method">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            ${instagramSvg(28)}
             <h4>Instagram DM</h4>
             <p>@nofy_okinawa<br>DMからもご注文・ご相談いただけます</p>
           </div>
