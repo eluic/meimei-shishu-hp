@@ -101,41 +101,37 @@ const header = (currentPage: string = '') => `
 const footer = () => `
 <footer id="site-footer">
   <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="/static/images/logo/logo.png" alt="〜NOFY〜" class="footer-logo">
-        <p class="footer-tagline">ひとつひとつの命に、<br>特別な想いを込めて。</p>
+    <!-- Logo + Tagline -->
+    <div class="footer-logo-block">
+      <img src="/static/images/logo/logo.png" alt="〜NOFY〜" class="footer-logo-img">
+      <p class="footer-tagline">マダガスカル語で「夢」</p>
+    </div>
+    <!-- Navigation -->
+    <nav class="footer-nav-block" aria-label="フッターナビゲーション">
+      <div class="footer-nav-links">
+        <a href="/about">ブランドストーリー</a>
+        <a href="/products">商品一覧</a>
+        <a href="/order-flow">オーダーの流れ</a>
+        <a href="/gallery">制作実績</a>
+        <a href="/faq">よくある質問</a>
+        <a href="/contact">お問い合わせ</a>
       </div>
-      <div class="footer-nav">
-        <h3>ページ</h3>
-        <ul>
-          <li><a href="/">ホーム</a></li>
-          <li><a href="/about">ブランドストーリー</a></li>
-          <li><a href="/products">商品一覧</a></li>
-          <li><a href="/order-flow">オーダーの流れ</a></li>
-          <li><a href="/gallery">制作実績</a></li>
-        </ul>
-      </div>
-      <div class="footer-nav">
-        <h3>サポート</h3>
-        <ul>
-          <li><a href="/faq">よくある質問</a></li>
-          <li><a href="/contact">お問い合わせ</a></li>
-          <li><a href="/privacy">プライバシーポリシー</a></li>
-          <li><a href="/legal">特定商取引法に基づく表記</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h3>お問い合わせ</h3>
-        <p><i data-lucide="map-pin"></i> 沖縄市泡瀬2-45-12</p>
-        <p><i data-lucide="mail"></i> nofy.2986@gmail.com</p>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            ${instagramSvg(16)}
-          </a>
-        </div>
+    </nav>
+    <!-- Social -->
+    <div class="footer-social-block">
+      <div class="footer-social">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          ${instagramSvg(16)}
+        </a>
       </div>
     </div>
+    <!-- Info -->
+    <div class="footer-info-block">
+      <p class="footer-info-brand">〜NOFY〜</p>
+      <p class="footer-info-address">沖縄市泡瀬2-45-12</p>
+      <p class="footer-info-email">nofy.2986@gmail.com</p>
+    </div>
+    <!-- Copyright -->
     <div class="footer-bottom">
       <p>&copy; 2025 〜NOFY〜 All Rights Reserved.</p>
       <p class="footer-note">※ ご注文後のやり取りはInstagram DMにて行います</p>
@@ -200,7 +196,7 @@ const products = [
 
 // ============================================================
 // PAGE: トップページ (front-page)
-// New layout: Hero → Brand Message → おすすめ → NEW → Concept Gallery → Products → Instagram → CTA → Footer
+// Phase 3 layout: Hero → Products/Lineup → Pickup → Gallery excerpt → Order Flow → Voice → Instagram → News → CTA → Footer
 // ============================================================
 app.get('/', (c) => {
   const body = `
@@ -213,10 +209,13 @@ app.get('/', (c) => {
     </div>
     <div class="hero-overlay">
       <div class="hero-content">
-        <p class="hero-catch vertical-text">ひとつひとつの命に、<br>特別な想いを込めて。</p>
+        <h1 class="hero-catch" lang="ja">
+          <span class="hero-catch__line">ひとつひとつの命に、</span>
+          <span class="hero-catch__line">特別な想いを込めて。</span>
+        </h1>
         <div class="hero-buttons">
-          <a href="/products" class="btn btn-outline">商品を見る</a>
-          <a href="/order-flow" class="btn btn-outline-white">オーダーの流れ</a>
+          <a href="/products" class="hero-btn-primary">商品を見る</a>
+          <a href="/order-flow" class="hero-btn-secondary">オーダーの流れ</a>
         </div>
       </div>
     </div>
@@ -227,125 +226,10 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- 2. Brand Message Section — Poetic, centered, dividers -->
-  <section class="brand-message-section">
-    <div class="brand-message-inner">
-      ${divider()}
-      <div class="brand-message-text">
-        <p>お子さんが誕生してから、<br>初めて贈られる特別な名前。</p>
-        <p>その名前に込められた、<br>ご家族の愛と願いを<br>一針一針、丁寧に刺繍します。</p>
-        <p>紙では残せない想いを、<br>沖縄の美しい彩りとともに、<br>世界にひとつだけの作品として。</p>
-      </div>
-      ${divider()}
-    </div>
-  </section>
-
-  <!-- 3. おすすめ Pickup — Large photo + "\ おすすめ /" label -->
-  <section class="pickup-section">
-    <div class="pickup-inner">
-      <p class="pickup-label">\\ おすすめ /</p>
-      ${dividerLine()}
-      <a href="/products/bingata-red" class="pickup-image">
-        <img src="/static/images/products/bingata-red.jpg" alt="紅型 赤 - おすすめ商品" loading="lazy">
-      </a>
-      <h3 class="pickup-name">命名刺繍 紅型 赤</h3>
-      <p class="pickup-desc">鮮やかな紅型柄の赤い帯を使用した、NOFYの代表作。<br class="pc-only">沖縄の伝統美が映える、華やかで格調高い命名刺繍です。</p>
-      <a href="/products/bingata-red" class="btn btn-outline-brand">詳しく見る</a>
-    </div>
-  </section>
-
-  <!-- 4. NEW Pickup — Large photo + "\ NEW /" label -->
-  <section class="pickup-section alt-bg">
-    <div class="pickup-inner">
-      <p class="pickup-label">\\ NEW /</p>
-      ${dividerLine()}
-      <a href="/products/sakura-navy" class="pickup-image">
-        <img src="/static/images/products/sakura-navy.jpg" alt="桜 ネイビー - 新商品" loading="lazy">
-      </a>
-      <h3 class="pickup-name">命名刺繍 桜 ネイビー</h3>
-      <p class="pickup-desc">桜柄のネイビー帯を使った新作。<br class="pc-only">落ち着きと華やかさを兼ね備えた、上品なデザインです。</p>
-      <a href="/products/sakura-navy" class="btn btn-outline-brand">詳しく見る</a>
-    </div>
-  </section>
-
-  <!-- 5. Concept Gallery — 4 photos with poetic captions -->
-  <section class="concept-gallery-section">
-    <div class="container">
-      <h2 class="section-title center"><span class="title-en">Concept</span>想いを、刺繍に。</h2>
-      ${dividerLine()}
-      <div class="concept-gallery-grid">
-        <div class="concept-gallery-item">
-          <div class="cg-image">
-            <img src="/static/images/products/bingata-blue1.jpg" alt="沖縄の彩り" loading="lazy">
-          </div>
-          <p class="concept-gallery-caption">沖縄の彩りを、<br>命名の祝いに</p>
-        </div>
-        <div class="concept-gallery-item">
-          <div class="cg-image">
-            <img src="/static/images/products/bingata-pink.jpg" alt="紅型に込めた願い" loading="lazy">
-          </div>
-          <p class="concept-gallery-caption">紅型に込めた、<br>家族の願い</p>
-        </div>
-        <div class="concept-gallery-item">
-          <div class="cg-image">
-            <img src="/static/images/products/sakura-pink.jpg" alt="世界にひとつだけ" loading="lazy">
-          </div>
-          <p class="concept-gallery-caption">世界にひとつだけの、<br>刺繍の物語</p>
-        </div>
-        <div class="concept-gallery-item">
-          <div class="cg-image">
-            <img src="/static/images/products/sakura-white.jpg" alt="一針一針に想いを" loading="lazy">
-          </div>
-          <p class="concept-gallery-caption">一針一針に、<br>想いを込めて</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Products Grid -->
+  <!-- 2. Products / Lineup Section (moved up!) -->
   <section id="products-section" class="section">
     <div class="container">
-      <h2 class="section-title center"><span class="title-en">Products</span>命名刺繍ラインナップ</h2>
-      <p class="section-subtitle">沖縄の伝統紅型や桜柄など、特別な生地を使用した命名刺繍をお作りします。</p>
-      <div class="products-grid">
-        ${products.slice(0, 6).map(p => `
-        <a href="/products/${p.id}" class="product-card">
-          <div class="product-image-wrap">
-            <img src="${p.image}" alt="${p.name}" loading="lazy">
-          </div>
-          <div class="product-info">
-            <h3>${p.name}</h3>
-            <p class="product-price">¥7,500〜</p>
-          </div>
-        </a>
-        `).join('')}
-      </div>
-      <div class="section-cta">
-        <a href="/products" class="btn btn-outline-brand">すべての商品を見る</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. Instagram Section -->
-  <section class="instagram-section">
-    <div class="container">
-      <div class="instagram-icon">${instagramSvg(32)}</div>
-      <p class="instagram-handle"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">@nofy_okinawa</a></p>
-      <p class="instagram-desc">NOFYの最新作品や制作の様子をInstagramで発信しています。</p>
-      <div class="instagram-grid">
-        ${products.slice(0, 4).map(p => `
-        <div class="instagram-item">
-          <img src="${p.image}" alt="${p.name}" loading="lazy">
-        </div>
-        `).join('')}
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. Pricing Section -->
-  <section id="pricing-section" class="section pricing-section">
-    <div class="container">
-      <h2 class="section-title center"><span class="title-en">Price</span>料金プラン</h2>
+      <h2 class="section-title center"><span class="title-en">Lineup</span>命名刺繍ラインナップ</h2>
       ${dividerLine()}
       <div class="pricing-grid">
         <div class="pricing-card">
@@ -394,10 +278,100 @@ app.get('/', (c) => {
         </div>
       </div>
       <p class="pricing-note">※ カラー変更 +500円〜 / 追加文字 5文字以上で料金加算あり</p>
+      <div class="section-cta">
+        <a href="/products" class="btn btn-outline-brand">すべての商品を見る</a>
+      </div>
     </div>
   </section>
 
-  <!-- 9. Voice Section -->
+  <!-- 3. Pickup (おすすめ / NEW) -->
+  <section class="pickup-section">
+    <div class="pickup-inner">
+      <p class="pickup-label">\\ おすすめ /</p>
+      ${dividerLine()}
+      <a href="/products/bingata-red" class="pickup-image">
+        <img src="/static/images/products/bingata-red.jpg" alt="紅型 赤 - おすすめ商品" loading="lazy">
+      </a>
+      <h3 class="pickup-name">命名刺繍 紅型 赤</h3>
+      <p class="pickup-desc">鮮やかな紅型柄の赤い帯を使用した、NOFYの代表作。<br class="pc-only">沖縄の伝統美が映える、華やかで格調高い命名刺繍です。</p>
+      <a href="/products/bingata-red" class="btn btn-outline-brand">詳しく見る</a>
+    </div>
+  </section>
+
+  <section class="pickup-section alt-bg">
+    <div class="pickup-inner">
+      <p class="pickup-label">\\ NEW /</p>
+      ${dividerLine()}
+      <a href="/products/sakura-navy" class="pickup-image">
+        <img src="/static/images/products/sakura-navy.jpg" alt="桜 ネイビー - 新商品" loading="lazy">
+      </a>
+      <h3 class="pickup-name">命名刺繍 桜 ネイビー</h3>
+      <p class="pickup-desc">桜柄のネイビー帯を使った新作。<br class="pc-only">落ち着きと華やかさを兼ね備えた、上品なデザインです。</p>
+      <a href="/products/sakura-navy" class="btn btn-outline-brand">詳しく見る</a>
+    </div>
+  </section>
+
+  <!-- 4. Gallery Excerpt -->
+  <section class="gallery-excerpt-section">
+    <div class="container">
+      <h2 class="section-title center"><span class="title-en">Gallery</span>制作実績</h2>
+      ${dividerLine()}
+      <div class="gallery-excerpt-grid">
+        ${products.slice(0, 8).map(p => `
+        <div class="gallery-excerpt-item">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
+        </div>
+        `).join('')}
+      </div>
+      <div class="section-cta">
+        <a href="/gallery" class="btn btn-outline-brand">ギャラリーをすべて見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Order Flow (Simplified Horizontal) -->
+  <section class="order-flow-simple section">
+    <div class="container">
+      <h2 class="section-title center"><span class="title-en">Order Flow</span>オーダーの流れ</h2>
+      ${dividerLine()}
+      <div class="order-steps-horizontal">
+        <div class="order-step-simple">
+          <div class="order-step-icon"><i data-lucide="layout-template"></i></div>
+          <p class="order-step-num">STEP 1</p>
+          <p class="order-step-title">デザイン選択</p>
+        </div>
+        <div class="order-step-arrow"><i data-lucide="chevron-right"></i></div>
+        <div class="order-step-simple">
+          <div class="order-step-icon"><i data-lucide="swatch-book"></i></div>
+          <p class="order-step-num">STEP 2</p>
+          <p class="order-step-title">生地・帯を選ぶ</p>
+        </div>
+        <div class="order-step-arrow"><i data-lucide="chevron-right"></i></div>
+        <div class="order-step-simple">
+          <div class="order-step-icon"><i data-lucide="send"></i></div>
+          <p class="order-step-num">STEP 3</p>
+          <p class="order-step-title">注文フォーム送信</p>
+        </div>
+        <div class="order-step-arrow"><i data-lucide="chevron-right"></i></div>
+        <div class="order-step-simple">
+          <div class="order-step-icon"><i data-lucide="image"></i></div>
+          <p class="order-step-num">STEP 4</p>
+          <p class="order-step-title">完成写真確認</p>
+        </div>
+        <div class="order-step-arrow"><i data-lucide="chevron-right"></i></div>
+        <div class="order-step-simple">
+          <div class="order-step-icon"><i data-lucide="package"></i></div>
+          <p class="order-step-num">STEP 5</p>
+          <p class="order-step-title">入金・発送</p>
+        </div>
+      </div>
+      <div class="section-cta">
+        <a href="/order-flow" class="btn btn-outline-brand">詳しいオーダーの流れを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Voice Section -->
   <section id="voice-section" class="section voice-section">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Voice</span>お客様の声</h2>
@@ -405,7 +379,6 @@ app.get('/', (c) => {
       <div class="voice-grid">
         <div class="voice-card">
           <div class="voice-avatar">
-            <!-- ※差し替え予定：お客様写真 -->
             <img src="https://placehold.jp/24/cccccc/ffffff/400x400.png?text=Customer+Photo" alt="お客様" loading="lazy">
           </div>
           <div class="voice-content">
@@ -416,7 +389,6 @@ app.get('/', (c) => {
         </div>
         <div class="voice-card">
           <div class="voice-avatar">
-            <!-- ※差し替え予定：お客様写真 -->
             <img src="https://placehold.jp/24/cccccc/ffffff/400x400.png?text=Customer+Photo" alt="お客様" loading="lazy">
           </div>
           <div class="voice-content">
@@ -427,7 +399,6 @@ app.get('/', (c) => {
         </div>
         <div class="voice-card">
           <div class="voice-avatar">
-            <!-- ※差し替え予定：お客様写真 -->
             <img src="https://placehold.jp/24/cccccc/ffffff/400x400.png?text=Customer+Photo" alt="お客様" loading="lazy">
           </div>
           <div class="voice-content">
@@ -440,14 +411,55 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- 10. CTA Section -->
+  <!-- 7. Instagram Section -->
+  <section class="instagram-section">
+    <div class="container">
+      <div class="instagram-icon">${instagramSvg(32)}</div>
+      <p class="instagram-handle"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">@nofy_okinawa</a></p>
+      <p class="instagram-desc">NOFYの最新作品や制作の様子をInstagramで発信しています。</p>
+      <div class="instagram-grid">
+        ${products.slice(0, 4).map(p => `
+        <div class="instagram-item">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
+        </div>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. News / お知らせ -->
+  <section class="news-section section">
+    <div class="container">
+      <h2 class="section-title center"><span class="title-en">News</span>お知らせ</h2>
+      ${dividerLine()}
+      <div class="news-list">
+        <div class="news-item">
+          <span class="news-date">2025.06.01</span>
+          <span class="news-badge new">NEW</span>
+          <p class="news-title"><a href="/products/sakura-navy">新作「桜 ネイビー」を発売しました</a></p>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025.05.15</span>
+          <span class="news-badge">お知らせ</span>
+          <p class="news-title">公式ホームページをリニューアルしました</p>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025.04.20</span>
+          <span class="news-badge">お知らせ</span>
+          <p class="news-title">Instagram フォロワー1,000人を突破しました。ありがとうございます！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CTA Section -->
   <section id="cta-section" class="cta-section">
     <div class="container">
       <div class="cta-inner">
         <h2>大切な命の誕生を、<br>特別な刺繍で残しませんか？</h2>
         <p>ご注文・ご相談はお気軽にお問い合わせください。</p>
         <div class="cta-buttons">
-          <a href="/contact" class="btn btn-white">お問い合わせ</a>
+          <a href="/contact" class="btn btn-white">ご注文・お問い合わせはこちら</a>
           <a href="/order-flow" class="btn btn-outline-white">オーダーの流れ</a>
         </div>
       </div>
