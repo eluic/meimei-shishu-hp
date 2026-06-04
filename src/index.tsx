@@ -209,10 +209,7 @@ app.get('/', (c) => {
     </div>
     <div class="hero-overlay">
       <div class="hero-content">
-        <h1 class="hero-catch" lang="ja">
-          <span class="hero-catch__line">ひとつひとつの命に、</span>
-          <span class="hero-catch__line">特別な想いを込めて。</span>
-        </h1>
+        <p class="hero-catch vertical-text">ひとつひとつの命に、<br>特別な想いを込めて。</p>
         <div class="hero-buttons">
           <a href="/products" class="hero-btn-primary">商品を見る</a>
           <a href="/order-flow" class="hero-btn-secondary">オーダーの流れ</a>
