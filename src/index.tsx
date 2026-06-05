@@ -201,20 +201,7 @@ const products = [
 app.get('/', (c) => {
   const body = `
   <!-- 1. Hero Section -->
-  <section id="hero-section" class="hero">
-    <div class="hero-slider">
-      <div class="hero-slide active" style="background-image: url('/static/images/hero/hero-01.jpg')"></div>
-      <div class="hero-slide" style="background-image: url('/static/images/hero/hero-02.jpg')"></div>
-      <div class="hero-slide" style="background-image: url('/static/images/hero/hero-03.jpg')"></div>
-      <div class="hero-slide" style="background-image: url('/static/images/hero/hero-04.jpg')"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-dots">
-      <button class="hero-dot active" data-slide="0" aria-label="スライド1"></button>
-      <button class="hero-dot" data-slide="1" aria-label="スライド2"></button>
-      <button class="hero-dot" data-slide="2" aria-label="スライド3"></button>
-      <button class="hero-dot" data-slide="3" aria-label="スライド4"></button>
-    </div>
+  <section id="hero-section" class="hero" style="background-image: url('/static/images/hero/hero-03.jpg')">
   </section>
 
   <!-- Catchcopy Bridge Section -->
