@@ -500,11 +500,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(26, 35, 50, 0.05) 0%,
-    rgba(26, 35, 50, 0.45) 100%
-  );
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
