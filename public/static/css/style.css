@@ -500,79 +500,26 @@ h1, h2, h3, h4, h5, h6 {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: transparent;
 }
 
-.hero-content { text-align: center; color: var(--color-white); }
-
-/* Hero vertical text — 2 columns, right-to-left */
-.hero-catch-wrap {
-  display: inline-flex;
-  flex-direction: row-reverse;
-  gap: 0.5em;
-  margin-bottom: 48px;
+/* Catchcopy bridge section — between Hero and Lineup */
+.catchcopy-bridge {
+  padding: 72px 0;
+  background: var(--color-white);
+  text-align: center;
 }
-.hero-catch-col {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  white-space: nowrap;
+.catchcopy-text {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 300;
-  letter-spacing: 0.15em;
-  line-height: 1.8;
-  color: #ffffff;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.25);
+  letter-spacing: 0.18em;
+  line-height: 2;
+  color: var(--color-text);
 }
-
-.hero-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-}
-
-/* Hero buttons — brand color outline with backdrop */
-.hero-btn-primary,
-.hero-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 40px;
-  font-family: var(--font-serif);
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  border: 2px solid;
-  background-color: rgba(255,255,255,0.12);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  min-width: 200px;
-  border-radius: var(--radius);
-}
-.hero-btn-primary {
-  border-color: var(--color-primary-light);
-  color: var(--color-white);
-}
-.hero-btn-primary:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-.hero-btn-secondary {
-  border-color: var(--color-accent-light);
-  color: var(--color-white);
-}
-.hero-btn-secondary:hover {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #ffffff;
-  transform: translateY(-2px);
+@media (max-width: 768px) {
+  .catchcopy-bridge { padding: 48px 0; }
+  .catchcopy-text { font-size: 1.15rem; letter-spacing: 0.12em; }
 }
 
 .hero-dots {
@@ -599,16 +546,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-  .hero { min-height: 100vh; }
-  .hero-catch-col {
-    font-size: 1.3rem;
-    letter-spacing: 0.12em;
-  }
-  .hero-buttons { flex-direction: column; align-items: center; }
-  .hero-btn-primary,
-  .hero-btn-secondary {
-    min-width: 180px;
-    padding: 14px 32px;
+  .hero { min-height: 100vh;
     font-size: 0.85rem;
   }
 }

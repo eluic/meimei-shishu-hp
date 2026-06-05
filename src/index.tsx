@@ -208,23 +208,19 @@ app.get('/', (c) => {
       <div class="hero-slide" style="background-image: url('/static/images/hero/hero-03.jpg')"></div>
       <div class="hero-slide" style="background-image: url('/static/images/hero/hero-04.jpg')"></div>
     </div>
-    <div class="hero-overlay">
-      <div class="hero-content">
-        <div class="hero-catch-wrap">
-          <span class="hero-catch-col">ひとつひとつの命に、</span>
-          <span class="hero-catch-col">特別な想いを込めて。</span>
-        </div>
-        <div class="hero-buttons">
-          <a href="/products" class="hero-btn-primary">商品を見る</a>
-          <a href="/order-flow" class="hero-btn-secondary">オーダーの流れ</a>
-        </div>
-      </div>
-    </div>
+    <div class="hero-overlay"></div>
     <div class="hero-dots">
       <button class="hero-dot active" data-slide="0" aria-label="スライド1"></button>
       <button class="hero-dot" data-slide="1" aria-label="スライド2"></button>
       <button class="hero-dot" data-slide="2" aria-label="スライド3"></button>
       <button class="hero-dot" data-slide="3" aria-label="スライド4"></button>
+    </div>
+  </section>
+
+  <!-- Catchcopy Bridge Section -->
+  <section class="catchcopy-bridge">
+    <div class="container">
+      <p class="catchcopy-text">ひとつひとつの命に、特別な想いを込めて。</p>
     </div>
   </section>
 
