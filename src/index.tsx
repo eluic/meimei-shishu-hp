@@ -284,34 +284,7 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- 3. Pickup (おすすめ / NEW) -->
-  <section class="pickup-section">
-    <div class="pickup-inner">
-      <p class="pickup-label">\\ おすすめ /</p>
-      ${dividerLine()}
-      <a href="/products/bingata-red" class="pickup-image">
-        <img src="/static/images/products/bingata-red.jpg" alt="紅型 赤 - おすすめ商品" loading="lazy">
-      </a>
-      <h3 class="pickup-name">命名刺繍 紅型 赤</h3>
-      <p class="pickup-desc">鮮やかな紅型柄の赤い帯を使用した、NOFYの代表作。<br class="pc-only">沖縄の伝統美が映える、華やかで格調高い命名刺繍です。</p>
-      <a href="/products/bingata-red" class="btn btn-outline-brand">詳しく見る</a>
-    </div>
-  </section>
-
-  <section class="pickup-section alt-bg">
-    <div class="pickup-inner">
-      <p class="pickup-label">\\ NEW /</p>
-      ${dividerLine()}
-      <a href="/products/sakura-navy" class="pickup-image">
-        <img src="/static/images/products/sakura-navy.jpg" alt="桜 ネイビー - 新商品" loading="lazy">
-      </a>
-      <h3 class="pickup-name">命名刺繍 桜 ネイビー</h3>
-      <p class="pickup-desc">桜柄のネイビー帯を使った新作。<br class="pc-only">落ち着きと華やかさを兼ね備えた、上品なデザインです。</p>
-      <a href="/products/sakura-navy" class="btn btn-outline-brand">詳しく見る</a>
-    </div>
-  </section>
-
-  <!-- 4. Gallery Excerpt -->
+  <!-- 3. Gallery Excerpt -->
   <section class="gallery-excerpt-section">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Gallery</span>制作実績</h2>
