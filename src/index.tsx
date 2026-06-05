@@ -206,6 +206,7 @@ app.get('/', (c) => {
       <div class="hero-slide active" style="background-image: url('/static/images/hero/hero-01.jpg')"></div>
       <div class="hero-slide" style="background-image: url('/static/images/hero/hero-02.jpg')"></div>
       <div class="hero-slide" style="background-image: url('/static/images/hero/hero-03.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('/static/images/hero/hero-04.jpg')"></div>
     </div>
     <div class="hero-overlay">
       <div class="hero-content">
@@ -223,6 +224,7 @@ app.get('/', (c) => {
       <button class="hero-dot active" data-slide="0" aria-label="スライド1"></button>
       <button class="hero-dot" data-slide="1" aria-label="スライド2"></button>
       <button class="hero-dot" data-slide="2" aria-label="スライド3"></button>
+      <button class="hero-dot" data-slide="3" aria-label="スライド4"></button>
     </div>
   </section>
 
