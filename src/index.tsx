@@ -255,6 +255,9 @@ app.get('/', (c) => {
         </a>
         `).join('')}
       </div>
+      <div class="section-cta">
+        <a href="/products" class="btn btn-outline-brand">商品一覧を見る</a>
+      </div>
     </div>
   </section>
 
