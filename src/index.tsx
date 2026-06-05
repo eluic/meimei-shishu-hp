@@ -226,60 +226,34 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- 2. Products / Lineup Section (moved up!) -->
+  <!-- 2. Products / Lineup Section -->
   <section id="products-section" class="section">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Lineup</span>命名刺繍ラインナップ</h2>
-      ${dividerLine()}
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-badge">PLAN 1</div>
-          <h3>基本プラン</h3>
-          <p class="pricing-desc">お名前・読み方・生年月日</p>
-          <p class="pricing-amount"><span class="yen">¥</span>7,500<span class="tax">（税込）</span></p>
-          <ul class="pricing-features">
-            <li><i data-lucide="check"></i>お名前（漢字）</li>
-            <li><i data-lucide="check"></i>読み方（ふりがな）</li>
-            <li><i data-lucide="check"></i>生年月日</li>
-            <li><i data-lucide="check"></i>額縁付き</li>
-          </ul>
-          <a href="/contact" class="btn btn-outline-brand btn-block">注文する</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">PLAN 2<span class="popular">人気</span></div>
-          <h3>身長・体重プラン</h3>
-          <p class="pricing-desc">基本 + 身長・体重</p>
-          <p class="pricing-amount"><span class="yen">¥</span>9,000<span class="tax">（税込）</span></p>
-          <ul class="pricing-features">
-            <li><i data-lucide="check"></i>お名前（漢字）</li>
-            <li><i data-lucide="check"></i>読み方（ふりがな）</li>
-            <li><i data-lucide="check"></i>生年月日</li>
-            <li><i data-lucide="check"></i>身長</li>
-            <li><i data-lucide="check"></i>体重</li>
-            <li><i data-lucide="check"></i>額縁付き</li>
-          </ul>
-          <a href="/contact" class="btn btn-primary btn-block">注文する</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-badge">PLAN 3</div>
-          <h3>フルプラン</h3>
-          <p class="pricing-desc">基本 + 身長・体重 + 両親名前</p>
-          <p class="pricing-amount"><span class="yen">¥</span>11,000<span class="tax">（税込）</span></p>
-          <ul class="pricing-features">
-            <li><i data-lucide="check"></i>お名前（漢字）</li>
-            <li><i data-lucide="check"></i>読み方（ふりがな）</li>
-            <li><i data-lucide="check"></i>生年月日</li>
-            <li><i data-lucide="check"></i>身長</li>
-            <li><i data-lucide="check"></i>体重</li>
-            <li><i data-lucide="check"></i>ご両親のお名前</li>
-            <li><i data-lucide="check"></i>額縁付き</li>
-          </ul>
-          <a href="/contact" class="btn btn-outline-brand btn-block">注文する</a>
-        </div>
+      <p class="section-subtitle">沖縄の伝統紅型や桜柄など、特別な生地を使用した命名刺繍をお作りします。</p>
+
+      <div class="products-filter">
+        <button class="filter-btn active" data-filter="all">すべて</button>
+        <button class="filter-btn" data-filter="bingata">紅型シリーズ</button>
+        <button class="filter-btn" data-filter="sakura">桜シリーズ</button>
       </div>
-      <p class="pricing-note">※ カラー変更 +500円〜 / 追加文字 5文字以上で料金加算あり</p>
-      <div class="section-cta">
-        <a href="/products" class="btn btn-outline-brand">すべての商品を見る</a>
+
+      <div class="products-grid-full" id="products-grid">
+        ${products.map(p => `
+        <a href="/products/${p.id}" class="product-card" data-category="${p.category}">
+          <div class="product-image-wrap">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+            <div class="product-overlay">
+              <span>詳細を見る</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>${p.name}</h3>
+            <p class="product-desc">${p.description}</p>
+            <p class="product-price">¥7,500〜</p>
+          </div>
+        </a>
+        `).join('')}
       </div>
     </div>
   </section>
