@@ -717,6 +717,152 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
+   PLAN CARDS — Top page lineup section
+   ============================================================ */
+.plan-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.plan-card {
+  position: relative;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+.plan-card--popular {
+  border: 2px solid var(--color-primary);
+}
+.plan-card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  z-index: 2;
+}
+.plan-card-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.plan-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.plan-card:hover .plan-card-image img {
+  transform: scale(1.04);
+}
+.plan-card-body {
+  padding: 28px 24px 32px;
+}
+.plan-card-label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+.plan-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--color-heading);
+  margin-bottom: 16px;
+}
+.plan-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.plan-card-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-border-light, #f0ebe4);
+}
+.plan-card-list li:last-child {
+  border-bottom: none;
+}
+.plan-card-list li svg,
+.plan-card-list li i {
+  width: 16px;
+  height: 16px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+.plan-card-price {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+.plan-card-price span {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-text-light);
+}
+.plan-card-btn {
+  display: block;
+  text-align: center;
+  padding: 12px 0;
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.plan-card-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+.plan-card--popular .plan-card-btn {
+  background: var(--color-primary);
+  color: #fff;
+}
+.plan-card--popular .plan-card-btn:hover {
+  background: var(--color-primary-dark, #8c1e16);
+}
+
+@media (max-width: 768px) {
+  .plan-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plan-card-body {
+    padding: 20px 20px 24px;
+  }
+}
+
+/* ============================================================
    PRODUCTS GRID — Photo-forward, minimal shadow
    ============================================================ */
 .products-grid {

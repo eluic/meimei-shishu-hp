@@ -211,37 +211,70 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- 2. Products / Lineup Section -->
+  <!-- 2. Plan / Lineup Section -->
   <section id="products-section" class="section">
     <div class="container">
-      <h2 class="section-title center"><span class="title-en">Lineup</span>命名刺繍ラインナップ</h2>
-      <p class="section-subtitle">紅型をイメージしたプリント生地や桜柄など、特別な生地を使用した命名刺繍をお作りします。</p>
+      <h2 class="section-title center"><span class="title-en">Plan</span>命名刺繍プラン</h2>
+      <p class="section-subtitle">命名内容に合わせて3つのプランをご用意しています。<br>すべてのプランで、お好みの帯（紅型風・桜柄など）をお選びいただけます。</p>
 
-      <div class="products-filter">
-        <button class="filter-btn active" data-filter="all">すべて</button>
-        <button class="filter-btn" data-filter="bingata">紅型風シリーズ</button>
-        <button class="filter-btn" data-filter="sakura">桜シリーズ</button>
+      <div class="plan-cards">
+
+        <div class="plan-card">
+          <div class="plan-card-image">
+            <img src="/static/images/hero/hero-01.jpg" alt="ベーシックプラン：お名前＋生年月日" loading="lazy">
+          </div>
+          <div class="plan-card-body">
+            <span class="plan-card-label">Basic</span>
+            <h3 class="plan-card-title">ベーシック</h3>
+            <ul class="plan-card-list">
+              <li><i data-lucide="check"></i>お名前（漢字・ふりがな）</li>
+              <li><i data-lucide="check"></i>生年月日</li>
+            </ul>
+            <p class="plan-card-price">¥7,500<span>（税込）</span></p>
+            <a href="/products" class="plan-card-btn">帯の種類を見る</a>
+          </div>
+        </div>
+
+        <div class="plan-card plan-card--popular">
+          <span class="plan-card-badge">人気No.1</span>
+          <div class="plan-card-image">
+            <img src="/static/images/hero/hero-main.jpg" alt="スタンダードプラン：お名前＋生年月日＋身長・体重" loading="lazy">
+          </div>
+          <div class="plan-card-body">
+            <span class="plan-card-label">Standard</span>
+            <h3 class="plan-card-title">スタンダード</h3>
+            <ul class="plan-card-list">
+              <li><i data-lucide="check"></i>お名前（漢字・ふりがな）</li>
+              <li><i data-lucide="check"></i>生年月日</li>
+              <li><i data-lucide="check"></i>身長・体重</li>
+            </ul>
+            <p class="plan-card-price">¥8,500<span>（税込）</span></p>
+            <a href="/products" class="plan-card-btn">帯の種類を見る</a>
+          </div>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-card-image">
+            <img src="/static/images/hero/hero-04.jpg" alt="プレミアムプラン：お名前＋生年月日＋身長・体重＋ご両親のお名前" loading="lazy">
+          </div>
+          <div class="plan-card-body">
+            <span class="plan-card-label">Premium</span>
+            <h3 class="plan-card-title">プレミアム</h3>
+            <ul class="plan-card-list">
+              <li><i data-lucide="check"></i>お名前（漢字・ふりがな）</li>
+              <li><i data-lucide="check"></i>生年月日</li>
+              <li><i data-lucide="check"></i>身長・体重</li>
+              <li><i data-lucide="check"></i>ご両親のお名前</li>
+            </ul>
+            <p class="plan-card-price">¥9,500<span>（税込）</span></p>
+            <a href="/products" class="plan-card-btn">帯の種類を見る</a>
+          </div>
+        </div>
+
       </div>
 
-      <div class="products-grid-full" id="products-grid">
-        ${products.map(p => `
-        <a href="/products/${p.id}" class="product-card" data-category="${p.category}">
-          <div class="product-image-wrap">
-            <img src="${p.image}" alt="${p.name}" loading="lazy">
-            <div class="product-overlay">
-              <span>詳細を見る</span>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3>${p.name}</h3>
-            <p class="product-desc">${p.description}</p>
-            <p class="product-price">¥7,500〜</p>
-          </div>
-        </a>
-        `).join('')}
-      </div>
       <div class="section-cta">
-        <a href="/products" class="btn btn-outline-brand">商品一覧を見る</a>
+        <a href="/products" class="btn btn-outline-brand">帯の種類を見る（商品一覧）</a>
       </div>
     </div>
   </section>
