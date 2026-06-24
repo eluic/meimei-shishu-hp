@@ -201,7 +201,7 @@ const products = [
 app.get('/', (c) => {
   const body = `
   <!-- 1. Hero Section -->
-  <section id="hero-section" class="hero" style="background-image: url('/static/images/hero/hero-03.jpg')">
+  <section id="hero-section" class="hero" style="background-image: url('/static/images/hero/hero-main.jpg')">
   </section>
 
   <!-- Catchcopy Bridge Section -->
