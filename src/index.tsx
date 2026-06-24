@@ -304,15 +304,15 @@ app.get('/', (c) => {
       ${dividerLine()}
       <div class="order-steps-horizontal">
         <div class="order-step-simple">
-          <div class="order-step-icon"><i data-lucide="layout-template"></i></div>
+          <div class="order-step-icon"><i data-lucide="list-checks"></i></div>
           <p class="order-step-num">STEP 1</p>
-          <p class="order-step-title">デザイン選択</p>
+          <p class="order-step-title">命名プラン選択</p>
         </div>
         <div class="order-step-arrow"><i data-lucide="chevron-right"></i></div>
         <div class="order-step-simple">
           <div class="order-step-icon"><i data-lucide="swatch-book"></i></div>
           <p class="order-step-num">STEP 2</p>
-          <p class="order-step-title">生地・帯を選ぶ</p>
+          <p class="order-step-title">帯・生地を選ぶ</p>
         </div>
         <div class="order-step-arrow"><i data-lucide="chevron-right"></i></div>
         <div class="order-step-simple">
@@ -811,10 +811,10 @@ app.get('/order-flow', (c) => {
       <div class="steps">
         <div class="step">
           <div class="step-number">STEP 01</div>
-          <div class="step-icon"><i data-lucide="layout-template"></i></div>
+          <div class="step-icon"><i data-lucide="list-checks"></i></div>
           <div class="step-content">
-            <h3>デザイン・プランの選択</h3>
-            <p>商品一覧ページから、お好みのデザイン（紅型風・桜など）と料金プラン（基本 / 身長体重込み / フル）をお選びください。</p>
+            <h3>命名プランの選択</h3>
+            <p>まず、命名刺繍に記載する内容をお選びください。<br>「お名前＋生年月日」のベーシック、「身長・体重」も入るスタンダード、「ご両親のお名前」まで入るプレミアムの3プランからお選びいただけます。</p>
           </div>
         </div>
         <div class="step-connector"><i data-lucide="chevron-down"></i></div>
@@ -823,8 +823,8 @@ app.get('/order-flow', (c) => {
           <div class="step-number">STEP 02</div>
           <div class="step-icon"><i data-lucide="swatch-book"></i></div>
           <div class="step-content">
-            <h3>背景生地・帯の選択</h3>
-            <p>背景生地（バラ / 龍）と帯（15種類から）をお選びください。商品詳細ページで写真付きで確認できます。</p>
+            <h3>帯・背景生地の選択</h3>
+            <p>次に、お好みの帯（紅型風・桜柄など）と背景生地をお選びください。商品一覧ページで写真付きでご確認いただけます。</p>
           </div>
         </div>
         <div class="step-connector"><i data-lucide="chevron-down"></i></div>
