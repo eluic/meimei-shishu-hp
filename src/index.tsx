@@ -207,7 +207,7 @@ app.get('/', (c) => {
   <!-- Catchcopy Bridge Section -->
   <section class="catchcopy-bridge">
     <div class="container">
-      <p class="catchcopy-text">ひとつひとつの命に、特別な想いを込めて。</p>
+      <p class="catchcopy-text">お子さまの命名を、一生の記念に。<br>心を込めて丁寧に仕上げる命名刺繍。<br>ご自宅用にも、出産祝いにも。</p>
     </div>
   </section>
 
