@@ -18,7 +18,7 @@ const headMeta = (title: string, description: string, path: string = '/') => `
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title} | 〜NOFY〜 命名刺繍</title>
 <meta name="description" content="${description}">
-<meta name="keywords" content="命名刺繍, 出産祝い, 刺繍, 沖縄, 紅型, 命名書, NOFY">
+<meta name="keywords" content="命名刺繍, 出産祝い, 刺繍, 沖縄, 紅型風, 命名書, NOFY">
 <meta property="og:title" content="${title} | 〜NOFY〜 命名刺繍">
 <meta property="og:description" content="${description}">
 <meta property="og:type" content="website">
@@ -44,7 +44,7 @@ const headMeta = (title: string, description: string, path: string = '/') => `
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "〜NOFY〜",
-  "description": "沖縄発の命名刺繍ブランド。紅型や着物帯を使った世界にひとつだけの命名刺繍をお作りします。",
+  "description": "沖縄発の命名刺繍ブランド。紅型をイメージした生地や桜柄など、特別な素材を使った世界にひとつだけの命名刺繍をお作りします。",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "泡瀬2-45-12",
@@ -182,12 +182,12 @@ const dividerLine = () => `<div class="divider-line"></div>`
 // Products Data
 // ============================================================
 const products = [
-  { id: 'bingata-red', name: '紅型 赤', category: 'bingata', image: '/static/images/products/bingata-red.jpg', description: '鮮やかな紅型柄の赤い帯を使用。沖縄の伝統美を感じる華やかなデザイン。' },
-  { id: 'bingata-blue1', name: '紅型 水色①', category: 'bingata', image: '/static/images/products/bingata-blue1.jpg', description: '爽やかな水色の紅型柄。涼しげで上品な印象の命名刺繍。' },
-  { id: 'bingata-blue2', name: '紅型 水色②', category: 'bingata', image: '/static/images/products/bingata-blue2.jpg', description: '落ち着いた水色の紅型柄。柔らかく優しい雰囲気の命名刺繍。' },
-  { id: 'bingata-pink', name: '紅型 ピンク', category: 'bingata', image: '/static/images/products/bingata-pink.jpg', description: '可愛らしいピンクの紅型柄。女の子の出産祝いに人気のデザイン。' },
-  { id: 'bingata-black', name: '紅型 黒', category: 'bingata', image: '/static/images/products/bingata-black.jpg', description: 'シックな黒地の紅型柄。格調高く、特別感のあるデザイン。' },
-  { id: 'bingata-style-white', name: '紅型風 白', category: 'bingata', image: '/static/images/products/bingata-style-white.jpg', description: '白地に紅型風の柄を施した上品なデザイン。清楚で美しい命名刺繍。' },
+  { id: 'bingata-red', name: '紅型風 赤', category: 'bingata', image: '/static/images/products/bingata-red.jpg', description: '鮮やかな紅型風の赤い生地を使用。沖縄の伝統美をイメージした華やかなデザイン。' },
+  { id: 'bingata-blue1', name: '紅型風 水色①', category: 'bingata', image: '/static/images/products/bingata-blue1.jpg', description: '爽やかな水色の紅型風プリント生地。涼しげで上品な印象の命名刺繍。' },
+  { id: 'bingata-blue2', name: '紅型風 水色②', category: 'bingata', image: '/static/images/products/bingata-blue2.jpg', description: '落ち着いた水色の紅型風プリント生地。柔らかく優しい雰囲気の命名刺繍。' },
+  { id: 'bingata-pink', name: '紅型風 ピンク', category: 'bingata', image: '/static/images/products/bingata-pink.jpg', description: '可愛らしいピンクの紅型風プリント生地。女の子の出産祝いに人気のデザイン。' },
+  { id: 'bingata-black', name: '紅型風 黒', category: 'bingata', image: '/static/images/products/bingata-black.jpg', description: 'シックな黒地の紅型風プリント生地。格調高く、特別感のあるデザイン。' },
+  { id: 'bingata-style-white', name: '紅型風 白', category: 'bingata', image: '/static/images/products/bingata-style-white.jpg', description: '白地に紅型をイメージした柄を施した上品なデザイン。清楚で美しい命名刺繍。' },
   { id: 'sakura-navy', name: '桜 ネイビー', category: 'sakura', image: '/static/images/products/sakura-navy.jpg', description: '桜柄のネイビー帯。落ち着きと華やかさを兼ね備えたデザイン。' },
   { id: 'sakura-pink', name: '桜 ピンク', category: 'sakura', image: '/static/images/products/sakura-pink.jpg', description: '桜柄のピンク帯。春の訪れを感じる、可愛らしいデザイン。' },
   { id: 'sakura-red', name: '桜 赤', category: 'sakura', image: '/static/images/products/sakura-red.jpg', description: '桜柄の赤帯。華やかで格調高い、お祝いにふさわしいデザイン。' },
@@ -215,11 +215,11 @@ app.get('/', (c) => {
   <section id="products-section" class="section">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Lineup</span>命名刺繍ラインナップ</h2>
-      <p class="section-subtitle">沖縄の伝統紅型や桜柄など、特別な生地を使用した命名刺繍をお作りします。</p>
+      <p class="section-subtitle">紅型をイメージしたプリント生地や桜柄など、特別な生地を使用した命名刺繍をお作りします。</p>
 
       <div class="products-filter">
         <button class="filter-btn active" data-filter="all">すべて</button>
-        <button class="filter-btn" data-filter="bingata">紅型シリーズ</button>
+        <button class="filter-btn" data-filter="bingata">紅型風シリーズ</button>
         <button class="filter-btn" data-filter="sakura">桜シリーズ</button>
       </div>
 
@@ -318,7 +318,7 @@ app.get('/', (c) => {
           </div>
           <div class="voice-content">
             <div class="voice-stars">★★★★★</div>
-            <p>「子供の名前を刺繍で残せるなんて素敵です。紅型の柄もとても綺麗で、家族みんなで感動しました。一生の宝物です。」</p>
+            <p>「子供の名前を刺繍で残せるなんて素敵です。紅型風の柄もとても綺麗で、家族みんなで感動しました。一生の宝物です。」</p>
             <p class="voice-name">— S様（沖縄県）</p>
           </div>
         </div>
@@ -403,7 +403,7 @@ app.get('/', (c) => {
   `
 
   return c.html(wrapPage(
-    headMeta('トップページ', '沖縄発の命名刺繍ブランド〜NOFY〜。紅型や着物帯を使った世界にひとつだけの命名刺繍をお作りします。', '/'),
+    headMeta('トップページ', '沖縄発の命名刺繍ブランド〜NOFY〜。紅型をイメージした生地や桜柄など、特別な素材を使った世界にひとつだけの命名刺繍をお作りします。', '/'),
     header('home'),
     body,
     footer()
@@ -438,7 +438,7 @@ app.get('/about', (c) => {
           <p>ブランドロゴにはマダガスカルをイメージしたデザインを取り入れ、個性豊かに子供たちがすくすくと成長していけるよう願いを込めています。</p>
         </div>
         <div class="about-image">
-          <img src="/static/images/products/bingata-red.jpg" alt="紅型の命名刺繍" loading="lazy">
+          <img src="/static/images/products/bingata-red.jpg" alt="紅型風の命名刺繍" loading="lazy">
         </div>
       </div>
     </div>
@@ -457,13 +457,13 @@ app.get('/about', (c) => {
         </div>
         <div class="value-card">
           <div class="value-icon"><i data-lucide="palette"></i></div>
-          <h3>沖縄の伝統美・紅型</h3>
-          <p>沖縄の伝統的な染物「紅型」の生地を使用。鮮やかな色彩と独特の模様が、命名刺繍に華やかさと格式を添えます。</p>
+          <h3>沖縄の伝統美をイメージ</h3>
+          <p>沖縄の伝統的な染物「紅型」をイメージしたプリント生地を使用。鮮やかな色彩と独特の模様が、命名刺繍に華やかさと格式を添えます。</p>
         </div>
         <div class="value-card">
           <div class="value-icon"><i data-lucide="gem"></i></div>
           <h3>特別な素材へのこだわり</h3>
-          <p>紅型をはじめ、着物帯や桜柄の生地など、特別な素材を厳選。生地の美しさが命名刺繍の魅力を一層引き立てます。</p>
+          <p>紅型風のプリント生地をはじめ、桜柄の生地など、特別な素材を厳選。生地の美しさが命名刺繍の魅力を一層引き立てます。</p>
         </div>
         <div class="value-card">
           <div class="value-icon"><i data-lucide="infinity"></i></div>
@@ -542,7 +542,7 @@ app.get('/products', (c) => {
     <div class="container">
       <div class="products-filter">
         <button class="filter-btn active" data-filter="all">すべて</button>
-        <button class="filter-btn" data-filter="bingata">紅型シリーズ</button>
+        <button class="filter-btn" data-filter="bingata">紅型風シリーズ</button>
         <button class="filter-btn" data-filter="sakura">桜シリーズ</button>
       </div>
 
@@ -568,7 +568,7 @@ app.get('/products', (c) => {
   `
 
   return c.html(wrapPage(
-    headMeta('商品一覧', '〜NOFY〜の命名刺繍商品一覧。紅型・桜柄など豊富なデザインから選べます。', '/products'),
+    headMeta('商品一覧', '〜NOFY〜の命名刺繍商品一覧。紅型風・桜柄など豊富なデザインから選べます。', '/products'),
     header('products'),
     body,
     footer()
@@ -781,7 +781,7 @@ app.get('/order-flow', (c) => {
           <div class="step-icon"><i data-lucide="layout-template"></i></div>
           <div class="step-content">
             <h3>デザイン・プランの選択</h3>
-            <p>商品一覧ページから、お好みのデザイン（紅型・桜など）と料金プラン（基本 / 身長体重込み / フル）をお選びください。</p>
+            <p>商品一覧ページから、お好みのデザイン（紅型風・桜など）と料金プラン（基本 / 身長体重込み / フル）をお選びください。</p>
           </div>
         </div>
         <div class="step-connector"><i data-lucide="chevron-down"></i></div>
@@ -874,7 +874,7 @@ app.get('/gallery', (c) => {
 
       <div class="gallery-filter">
         <button class="filter-btn active" data-filter="all">すべて</button>
-        <button class="filter-btn" data-filter="bingata">紅型</button>
+        <button class="filter-btn" data-filter="bingata">紅型風</button>
         <button class="filter-btn" data-filter="sakura">桜</button>
       </div>
 
@@ -903,7 +903,7 @@ app.get('/gallery', (c) => {
   `
 
   return c.html(wrapPage(
-    headMeta('制作実績・ギャラリー', '〜NOFY〜の命名刺繍制作実績。紅型・桜柄の美しい命名刺繍をご覧ください。', '/gallery'),
+    headMeta('制作実績・ギャラリー', '〜NOFY〜の命名刺繍制作実績。紅型風・桜柄の美しい命名刺繍をご覧ください。', '/gallery'),
     header('gallery'),
     body,
     footer()
