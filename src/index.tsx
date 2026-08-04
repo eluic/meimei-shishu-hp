@@ -212,7 +212,7 @@ app.get('/', (c) => {
   </section>
 
   <!-- 2. Plan / Lineup Section -->
-  <section id="products-section" class="section">
+  <section id="products-section" class="section" style="background: var(--color-base-alt);">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Plan</span>命名刺繍プラン</h2>
       <p class="section-subtitle">命名内容に合わせて3つのプランをご用意しています。<br>すべてのプランで、お好みの帯（紅型風・桜柄など）をお選びいただけます。</p>
@@ -298,7 +298,7 @@ app.get('/', (c) => {
   </section>
 
   <!-- 5. Order Flow (Simplified Horizontal) -->
-  <section class="order-flow-simple section">
+  <section class="order-flow-simple section" style="background: var(--color-base-alt);">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">Order Flow</span>オーダーの流れ</h2>
       ${dividerLine()}
@@ -396,7 +396,7 @@ app.get('/', (c) => {
   </section>
 
   <!-- 8. News / お知らせ -->
-  <section class="news-section section">
+  <section class="news-section section" style="background: var(--color-white);">
     <div class="container">
       <h2 class="section-title center"><span class="title-en">News</span>お知らせ</h2>
       ${dividerLine()}
