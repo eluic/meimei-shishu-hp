@@ -212,72 +212,65 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- 2. Plan / Lineup Section -->
-  <section id="products-section" class="section" style="background: var(--color-base-alt);">
-    <div class="container">
-      <h2 class="section-title center"><span class="title-en">Plan</span>命名刺繍プラン</h2>
-      <p class="section-subtitle">命名内容に合わせて3つのプランをご用意しています。<br>すべてのプランで、お好みの帯（紅型風・桜柄など）をお選びいただけます。</p>
+  <!-- 2. Plan / Lineup Section — Gallery Exhibition Style -->
+  <section id="products-section" class="plan-gallery-section">
 
-      <div class="plan-cards">
+    <div class="plan-gallery-header">
+      <span class="plan-gallery-en">Naming Embroidery</span>
+      <h2 class="plan-gallery-title">命名刺繍プラン</h2>
+      <p class="plan-gallery-lead">お名前に込められた想いを、<br class="sp-only">一針一針、刺繍で紡ぎます。</p>
+    </div>
 
-        <div class="plan-card">
-          <div class="plan-card-image">
-            <img src="/static/images/hero/hero-01.jpg" alt="ベーシックプラン：お名前＋生年月日" loading="lazy">
-          </div>
-          <div class="plan-card-body">
-            <span class="plan-card-label">Basic</span>
-            <h3 class="plan-card-title">ベーシック</h3>
-            <ul class="plan-card-list">
-              <li><i data-lucide="check"></i>お名前（漢字・ふりがな）</li>
-              <li><i data-lucide="check"></i>生年月日</li>
-            </ul>
-            <p class="plan-card-price">¥7,500<span>（税込）</span></p>
-            <a href="/products" class="plan-card-btn">帯の種類を見る</a>
-          </div>
-        </div>
-
-        <div class="plan-card plan-card--popular">
-          <span class="plan-card-badge">人気No.1</span>
-          <div class="plan-card-image">
-            <img src="/static/images/hero/hero-main.jpg" alt="スタンダードプラン：お名前＋生年月日＋身長・体重" loading="lazy">
-          </div>
-          <div class="plan-card-body">
-            <span class="plan-card-label">Standard</span>
-            <h3 class="plan-card-title">スタンダード</h3>
-            <ul class="plan-card-list">
-              <li><i data-lucide="check"></i>お名前（漢字・ふりがな）</li>
-              <li><i data-lucide="check"></i>生年月日</li>
-              <li><i data-lucide="check"></i>身長・体重</li>
-            </ul>
-            <p class="plan-card-price">¥8,500<span>（税込）</span></p>
-            <a href="/products" class="plan-card-btn">帯の種類を見る</a>
-          </div>
-        </div>
-
-        <div class="plan-card">
-          <div class="plan-card-image">
-            <img src="/static/images/hero/hero-04.jpg" alt="プレミアムプラン：お名前＋生年月日＋身長・体重＋ご両親のお名前" loading="lazy">
-          </div>
-          <div class="plan-card-body">
-            <span class="plan-card-label">Premium</span>
-            <h3 class="plan-card-title">プレミアム</h3>
-            <ul class="plan-card-list">
-              <li><i data-lucide="check"></i>お名前（漢字・ふりがな）</li>
-              <li><i data-lucide="check"></i>生年月日</li>
-              <li><i data-lucide="check"></i>身長・体重</li>
-              <li><i data-lucide="check"></i>ご両親のお名前</li>
-            </ul>
-            <p class="plan-card-price">¥9,500<span>（税込）</span></p>
-            <a href="/products" class="plan-card-btn">帯の種類を見る</a>
-          </div>
-        </div>
-
+    <!-- Featured: Standard Plan (人気No.1) — 大きくフィーチャー -->
+    <div class="plan-exhibit plan-exhibit--featured">
+      <div class="plan-exhibit-visual">
+        <img src="/static/images/hero/hero-main.jpg" alt="スタンダードプラン — 赤ちゃんと命名刺繍フレーム" loading="lazy">
       </div>
-
-      <div class="section-cta">
-        <a href="/products" class="btn btn-outline-brand">帯の種類を見る（商品一覧）</a>
+      <div class="plan-exhibit-caption">
+        <span class="plan-exhibit-badge">人気 No.1</span>
+        <span class="plan-exhibit-label">Standard Plan</span>
+        <h3 class="plan-exhibit-name">スタンダード</h3>
+        <p class="plan-exhibit-includes">お名前（漢字・ふりがな）・ 生年月日 ・ 身長 ・ 体重</p>
+        <p class="plan-exhibit-price">¥8,500<span>（税込）</span></p>
+        <a href="/products" class="plan-exhibit-link">帯の種類を見る <i data-lucide="arrow-right"></i></a>
       </div>
     </div>
+
+    <!-- Sub Plans: Basic & Premium — 並列展示 -->
+    <div class="plan-exhibit-pair">
+
+      <a href="/products" class="plan-exhibit plan-exhibit--sub">
+        <div class="plan-exhibit-visual">
+          <img src="/static/images/hero/hero-01.jpg" alt="ベーシックプラン — 額縁入り命名刺繍作品" loading="lazy">
+        </div>
+        <div class="plan-exhibit-caption">
+          <span class="plan-exhibit-label">Basic Plan</span>
+          <h3 class="plan-exhibit-name">ベーシック</h3>
+          <p class="plan-exhibit-includes">お名前（漢字・ふりがな）・ 生年月日</p>
+          <p class="plan-exhibit-price">¥7,500<span>（税込）</span></p>
+        </div>
+      </a>
+
+      <a href="/products" class="plan-exhibit plan-exhibit--sub">
+        <div class="plan-exhibit-visual">
+          <img src="/static/images/hero/hero-04.jpg" alt="プレミアムプラン — 額縁入り命名刺繍作品" loading="lazy">
+        </div>
+        <div class="plan-exhibit-caption">
+          <span class="plan-exhibit-label">Premium Plan</span>
+          <h3 class="plan-exhibit-name">プレミアム</h3>
+          <p class="plan-exhibit-includes">お名前・ 生年月日 ・ 身長 ・ 体重 ・ ご両親のお名前</p>
+          <p class="plan-exhibit-price">¥9,500<span>（税込）</span></p>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="plan-gallery-note">すべてのプランで、お好みの帯（紅型風・桜柄など）をお選びいただけます。</p>
+
+    <div class="plan-gallery-cta">
+      <a href="/products" class="btn btn-outline-brand">商品一覧を見る</a>
+    </div>
+
   </section>
 
   <!-- 3. Gallery Excerpt -->

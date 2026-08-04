@@ -687,151 +687,246 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   PLAN CARDS — Elegant, gallery-like presentation
+   PLAN GALLERY — 作品が主役の展示スタイル
+   美術館/ギャラリーのように写真が圧倒的に大きく、
+   プラン情報はキャプションとして控えめに添える
    ============================================================ */
-.plan-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 44px;
-}
-.plan-card {
-  position: relative;
+.plan-gallery-section {
   background: var(--color-white);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 100px 0 80px;
 }
-.plan-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(44, 40, 36, 0.08);
+
+/* --- Section Header: 最小限、上品 --- */
+.plan-gallery-header {
+  text-align: center;
+  margin-bottom: 64px;
+  padding: 0 24px;
 }
-.plan-card--popular {
-  border: 1px solid var(--color-accent);
-}
-.plan-card-badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: var(--color-accent);
-  color: var(--color-white);
-  font-family: var(--font-sans);
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  padding: 5px 14px;
-  z-index: 2;
-}
-.plan-card-image {
-  position: relative;
-  aspect-ratio: 16 / 11;
-  overflow: hidden;
-}
-.plan-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-.plan-card:hover .plan-card-image img {
-  transform: scale(1.03);
-}
-.plan-card-body {
-  padding: 26px 24px 30px;
-}
-.plan-card-label {
-  display: inline-block;
+.plan-gallery-en {
+  display: block;
   font-family: var(--font-serif);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 300;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+.plan-gallery-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-black);
+  letter-spacing: 0.18em;
+  margin-bottom: 24px;
+}
+.plan-gallery-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--color-accent);
+  margin: 20px auto 0;
+}
+.plan-gallery-lead {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--color-text-light);
+  letter-spacing: 0.1em;
+  line-height: 2;
+}
+
+/* --- Featured Exhibit: スタンダード（大きく横長展示） --- */
+.plan-exhibit--featured {
+  max-width: 960px;
+  margin: 0 auto 56px;
+  padding: 0 24px;
+}
+.plan-exhibit--featured .plan-exhibit-visual {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-base-alt);
+  margin-bottom: 0;
+}
+.plan-exhibit--featured .plan-exhibit-visual img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.25, 0, 0.25, 1);
+}
+.plan-exhibit--featured:hover .plan-exhibit-visual img {
+  transform: scale(1.02);
+}
+.plan-exhibit--featured .plan-exhibit-caption {
+  background: var(--color-white);
+  padding: 32px 0 0;
+  text-align: center;
+}
+
+/* --- Sub Exhibits: Basic & Premium（並列展示） --- */
+.plan-exhibit-pair {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 960px;
+  margin: 0 auto 48px;
+  padding: 0 24px;
+}
+.plan-exhibit--sub {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.4s ease;
+}
+.plan-exhibit--sub:hover {
+  opacity: 0.88;
+}
+.plan-exhibit--sub .plan-exhibit-visual {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-base-alt);
+  margin-bottom: 0;
+}
+.plan-exhibit--sub .plan-exhibit-visual img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.25, 0, 0.25, 1);
+}
+.plan-exhibit--sub:hover .plan-exhibit-visual img {
+  transform: scale(1.02);
+}
+.plan-exhibit--sub .plan-exhibit-caption {
+  padding: 24px 0 0;
+}
+
+/* --- Caption Elements: 美術館のキャプション風 --- */
+.plan-exhibit-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--color-white);
+  background: var(--color-accent);
+  padding: 4px 16px;
+  margin-bottom: 14px;
+}
+.plan-exhibit-label {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: 6px;
 }
-.plan-card-title {
+.plan-exhibit-name {
   font-family: var(--font-serif);
   font-size: 1.15rem;
   font-weight: 400;
   color: var(--color-black);
-  margin-bottom: 18px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
 }
-.plan-card-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 22px;
-}
-.plan-card-list li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.86rem;
-  color: var(--color-text);
-  padding: 7px 0;
-  border-bottom: 1px solid var(--color-border-light);
-  font-weight: 300;
-}
-.plan-card-list li:last-child {
-  border-bottom: none;
-}
-.plan-card-list li svg,
-.plan-card-list li i {
-  width: 15px;
-  height: 15px;
-  color: var(--color-accent);
-  flex-shrink: 0;
-}
-.plan-card-price {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: var(--color-primary);
-  margin-bottom: 20px;
-  letter-spacing: 0.05em;
-}
-.plan-card-price span {
-  font-size: 0.7rem;
-  font-weight: 300;
-  color: var(--color-text-muted);
-}
-.plan-card-btn {
-  display: block;
-  text-align: center;
-  padding: 12px 0;
+.plan-exhibit-includes {
   font-family: var(--font-sans);
   font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+.plan-exhibit-price {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+}
+.plan-exhibit-price span {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  margin-left: 2px;
+}
+.plan-exhibit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 300;
   letter-spacing: 0.1em;
   color: var(--color-primary);
-  border: 1px solid var(--color-border);
   text-decoration: none;
-  transition: all var(--transition);
+  margin-top: 16px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
 }
-.plan-card-btn:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
+.plan-exhibit-link:hover {
+  border-bottom-color: var(--color-primary);
 }
-.plan-card--popular .plan-card-btn {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
-}
-.plan-card--popular .plan-card-btn:hover {
-  background: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+.plan-exhibit-link svg,
+.plan-exhibit-link i {
+  width: 14px;
+  height: 14px;
 }
 
+/* --- Footer Note & CTA --- */
+.plan-gallery-note {
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  padding: 0 24px;
+  margin-bottom: 36px;
+}
+.plan-gallery-cta {
+  text-align: center;
+  padding: 0 24px;
+}
+
+/* --- Responsive --- */
+.sp-only { display: none; }
+
 @media (max-width: 768px) {
-  .plan-cards {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+  .plan-gallery-section {
+    padding: 72px 0 60px;
   }
-  .plan-card-body {
-    padding: 22px 20px 26px;
+  .plan-gallery-header {
+    margin-bottom: 44px;
+  }
+  .plan-gallery-title {
+    font-size: 1.3rem;
+  }
+  .sp-only { display: inline; }
+
+  .plan-exhibit--featured {
+    margin-bottom: 40px;
+  }
+  .plan-exhibit--featured .plan-exhibit-visual img {
+    aspect-ratio: 4 / 3;
+  }
+  .plan-exhibit--featured .plan-exhibit-caption {
+    padding: 24px 0 0;
+  }
+
+  .plan-exhibit-pair {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    margin-bottom: 36px;
+  }
+  .plan-exhibit--sub .plan-exhibit-visual img {
+    aspect-ratio: 3 / 2;
   }
 }
 
