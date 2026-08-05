@@ -3,6 +3,7 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initBrushLoading();
   initHeader();
   initHeroSlider();
   initHamburger();
@@ -14,6 +15,40 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initScrollAnimations();
 });
+
+/* ============================================================
+   BRUSH LOADING — 筆文字アニメーション制御
+   ============================================================ */
+function initBrushLoading() {
+  const overlay = document.getElementById('brush-loading');
+  if (!overlay) return;
+
+  // 1. Measure each stroke's path length and set as CSS variable
+  const strokes = overlay.querySelectorAll('.brush-stroke');
+  strokes.forEach((path) => {
+    const len = path.getTotalLength();
+    path.style.setProperty('--path-len', len);
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+  });
+
+  // 2. Calculate total animation duration
+  //    Each stroke: delay = 0.3s + index * 0.18s, duration ~0.28s+
+  //    Last stroke index = strokes.length - 1
+  const lastIndex = strokes.length - 1;
+  const totalAnimTime = 0.3 + lastIndex * 0.18 + 0.34; // last stroke delay + draw time
+  const brandDelay = 3.2; // brand text appears
+  const holdTime = Math.max(totalAnimTime, brandDelay) + 1.0; // +1s to appreciate
+
+  // 3. Fade out after animation completes
+  setTimeout(() => {
+    overlay.classList.add('is-done');
+    // Remove from DOM after transition
+    setTimeout(() => {
+      overlay.remove();
+    }, 900);
+  }, holdTime * 1000);
+}
 
 /* ============================================================
    HEADER SCROLL EFFECT

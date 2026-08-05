@@ -168,11 +168,46 @@ const breadcrumb = (items: { label: string; href?: string }[]) => {
   `
 }
 
-const wrapPage = (head: string, headerHtml: string, body: string, footerHtml: string) => `
+const wrapPage = (head: string, headerHtml: string, body: string, footerHtml: string, opts?: { loading?: boolean }) => `
 <!DOCTYPE html>
 <html lang="ja">
 <head>${head}</head>
-<body>${headerHtml}<main>${body}</main>${footerHtml}</body>
+<body>
+${opts?.loading ? `
+<!-- Brush Loading Overlay — 筆文字「夢」ローディング -->
+<div id="brush-loading" class="brush-loading" aria-hidden="true">
+  <div class="brush-loading-inner">
+    <svg class="brush-svg" viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+      <!-- 「夢」 stroke-by-stroke — 14 strokes, brush calligraphy style -->
+      <!-- 上部「艹」草冠 -->
+      <path class="brush-stroke" d="M120,40 C122,38 148,36 155,36" style="--stroke-index:0"/>
+      <path class="brush-stroke" d="M138,28 C138,34 137,52 136,68" style="--stroke-index:1"/>
+      <path class="brush-stroke" d="M195,40 C197,38 223,36 230,36" style="--stroke-index:2"/>
+      <path class="brush-stroke" d="M212,28 C212,34 211,52 210,68" style="--stroke-index:3"/>
+      <!-- 「罒」目の部分 -->
+      <path class="brush-stroke" d="M100,80 C120,78 220,76 250,78 C250,94 248,128 246,148" style="--stroke-index:4"/>
+      <path class="brush-stroke" d="M100,80 C100,96 100,128 102,148 C130,150 220,150 246,148" style="--stroke-index:5"/>
+      <path class="brush-stroke" d="M102,114 C130,112 220,112 246,114" style="--stroke-index:6"/>
+      <path class="brush-stroke" d="M175,82 C175,98 174,130 174,148" style="--stroke-index:7"/>
+      <!-- 中央の横画 -->
+      <path class="brush-stroke" d="M80,170 C120,167 230,165 270,168" style="--stroke-index:8"/>
+      <!-- 「夕」の外枠 -->
+      <path class="brush-stroke" d="M118,192 C116,216 112,264 108,296 C104,316 96,332 84,346" style="--stroke-index:9"/>
+      <path class="brush-stroke" d="M232,192 C230,216 226,264 222,296 C218,316 212,332 200,346" style="--stroke-index:10"/>
+      <!-- 「夕」の中のノ -->
+      <path class="brush-stroke" d="M210,200 C198,228 178,268 154,302" style="--stroke-index:11"/>
+      <!-- 「夕」の点 -->
+      <path class="brush-stroke" d="M178,230 C174,242 170,256 168,264" style="--stroke-index:12"/>
+      <!-- 最終画：下の大きな払い二本 -->
+      <path class="brush-stroke" d="M152,348 C144,368 128,392 108,410 C98,418 88,422 78,424" style="--stroke-index:13"/>
+      <path class="brush-stroke" d="M168,348 C178,370 196,394 218,412 C230,420 244,424 258,424" style="--stroke-index:14"/>
+    </svg>
+    <span class="brush-loading-brand">〜NOFY〜</span>
+  </div>
+</div>
+` : ''}
+${headerHtml}<main>${body}</main>${footerHtml}
+</body>
 </html>
 `
 
@@ -433,7 +468,8 @@ app.get('/', (c) => {
     headMeta('トップページ', '沖縄発の命名刺繍ブランド〜NOFY〜。紅型をイメージした生地や桜柄など、特別な素材を使った世界にひとつだけの命名刺繍をお作りします。', '/'),
     header('home'),
     body,
-    footer()
+    footer(),
+    { loading: true }
   ))
 })
 
