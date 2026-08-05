@@ -17,37 +17,70 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   BRUSH LOADING — 筆文字アニメーション制御
+   BRUSH LOADING — 筆文字「夢」ワイプアニメーション制御
+   clipPath rect の height をアニメーションし、
+   墨が上から下へ流れ落ちるように見せる
    ============================================================ */
 function initBrushLoading() {
   const overlay = document.getElementById('brush-loading');
   if (!overlay) return;
 
-  // 1. Measure each stroke's path length and set as CSS variable
-  const strokes = overlay.querySelectorAll('.brush-stroke');
-  strokes.forEach((path) => {
-    const len = path.getTotalLength();
-    path.style.setProperty('--path-len', len);
-    path.style.strokeDasharray = len;
-    path.style.strokeDashoffset = len;
+  // Respect reduced-motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    overlay.remove();
+    return;
+  }
+
+  const wipeRects = overlay.querySelectorAll('.wipe-rect');
+  const brand = overlay.querySelector('.brush-loading-brand');
+
+  // Animation timeline (ms)
+  const PHASE_GAP = 400;   // gap between phases
+  const WIPE_DURATION = 1200; // each wipe animation duration
+
+  // Phase 0: 上部 (top) — starts at 300ms
+  // Phase 1: 本体 (body) — starts after top completes + gap
+  // Phase 2: 内部白抜き (inner) — starts after body begins + small delay
+
+  const phases = [
+    { delay: 300,  duration: WIPE_DURATION },       // top
+    { delay: 300 + WIPE_DURATION * 0.6 + PHASE_GAP, duration: WIPE_DURATION * 1.4 }, // body (longer, bigger)
+    { delay: 300 + WIPE_DURATION * 0.6 + PHASE_GAP + 600, duration: WIPE_DURATION * 1.0 }, // inner holes
+  ];
+
+  // Animate each wipe-rect
+  wipeRects.forEach((rect, i) => {
+    const phase = phases[i] || phases[phases.length - 1];
+    const targetH = parseFloat(rect.getAttribute('data-target-h') || '500');
+
+    setTimeout(() => {
+      // Use Web Animations API for smooth interpolation
+      rect.animate(
+        [
+          { height: '0px' },
+          { height: targetH + 'px' }
+        ],
+        {
+          duration: phase.duration,
+          easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+          fill: 'forwards'
+        }
+      );
+    }, phase.delay);
   });
 
-  // 2. Calculate total animation duration
-  //    Each stroke: delay = 0.3s + index * 0.18s, duration ~0.28s+
-  //    Last stroke index = strokes.length - 1
-  const lastIndex = strokes.length - 1;
-  const totalAnimTime = 0.3 + lastIndex * 0.18 + 0.34; // last stroke delay + draw time
-  const brandDelay = 3.2; // brand text appears
-  const holdTime = Math.max(totalAnimTime, brandDelay) + 1.0; // +1s to appreciate
+  // Show brand name after most of the animation
+  const brandDelay = phases[1].delay + phases[1].duration * 0.7;
+  setTimeout(() => {
+    if (brand) brand.classList.add('is-visible');
+  }, brandDelay);
 
-  // 3. Fade out after animation completes
+  // Fade out overlay after everything completes
+  const totalTime = brandDelay + 1200; // +1.2s to appreciate
   setTimeout(() => {
     overlay.classList.add('is-done');
-    // Remove from DOM after transition
-    setTimeout(() => {
-      overlay.remove();
-    }, 900);
-  }, holdTime * 1000);
+    setTimeout(() => { overlay.remove(); }, 1100);
+  }, totalTime);
 }
 
 /* ============================================================
