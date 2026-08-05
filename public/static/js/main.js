@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ============================================================
    BRUSH LOADING — 筆文字「夢」書き順アニメーション制御
-   9フェーズのストロークを書き順に沿って順次 opacity 0→1 表示し、
+   9フェーズのストロークを書き順に沿って clipPath rect を伸ばし、
    実際に筆で一画ずつ書いているように見せる
    ============================================================ */
 function initBrushLoading() {
@@ -31,37 +31,110 @@ function initBrushLoading() {
     return;
   }
 
-  const phases = overlay.querySelectorAll('.stroke-phase');
+  const clipRects = overlay.querySelectorAll('.clip-rect');
   const brand = overlay.querySelector('.brush-loading-brand');
-  const totalPhases = phases.length; // 9
 
-  // Timing (ms)
-  const INITIAL_DELAY = 400;   // 最初の一画を始めるまでの間
-  const STROKE_INTERVAL = 320; // 各画の間隔 — 筆を運ぶテンポ
-  const PAUSE_AFTER = 800;     // 全画完了後、余韻を残す
-  const BRAND_DELAY = 600;     // ブランド名表示までの追加待ち
+  // Target dimensions for each clipPath rect (matching the full bbox of each phase)
+  // { width, height } — the rect will grow from 0 to these values
+  const targets = {
+    1: { w: 275, h: 50 },   // 艹 横画: wide horizontal
+    2: { w: 14,  h: 24 },   // 艹 左縦: thin vertical
+    3: { w: 206, h: 58 },   // 艹 右縦+top strokes
+    4: { w: 396, h: 40 },   // 罒 上横: wide frame top
+    5: { w: 398, h: 48 },   // 罒 内部: verticals
+    6: { w: 240, h: 35 },   // 罒 下部: bottom bar
+    7: { w: 282, h: 64 },   // 冖 + 横画: wide sweep
+    8: { w: 145, h: 280 },  // 夕 左払い: tall diagonal
+    9: { w: 412, h: 414 },  // 夕 右側+下部: biggest piece
+  };
 
-  // Phase ごとに順次表示
-  phases.forEach((phase, i) => {
-    setTimeout(() => {
-      phase.classList.add('is-written');
-    }, INITIAL_DELAY + i * STROKE_INTERVAL);
+  // Per-phase timing: duration proportional to stroke complexity
+  // Smaller/simpler strokes are faster, big sweeps are slower
+  const phaseConfig = [
+    { dur: 400,  gap: 80  },  // Phase 1: 横画 — medium
+    { dur: 180,  gap: 60  },  // Phase 2: 短い縦 — quick
+    { dur: 300,  gap: 80  },  // Phase 3: 縦画群 — medium
+    { dur: 450,  gap: 100 },  // Phase 4: 長い横 — sweeping
+    { dur: 350,  gap: 80  },  // Phase 5: 内部 — medium
+    { dur: 300,  gap: 80  },  // Phase 6: 下横 — medium
+    { dur: 450,  gap: 100 },  // Phase 7: 長い横 — sweeping
+    { dur: 550,  gap: 80  },  // Phase 8: 左払い — long diagonal
+    { dur: 700,  gap: 0   },  // Phase 9: 最大パーツ — slowest
+  ];
+
+  const INITIAL_DELAY = 350;
+
+  // Calculate start time for each phase
+  let cursor = INITIAL_DELAY;
+  const schedule = phaseConfig.map((cfg) => {
+    const start = cursor;
+    cursor += cfg.dur + cfg.gap;
+    return { start, dur: cfg.dur };
   });
 
-  // 全フェーズ表示完了時刻
-  const allWrittenAt = INITIAL_DELAY + (totalPhases - 1) * STROKE_INTERVAL + 350;
+  // Easing function: cubic-bezier(0.22, 0.61, 0.36, 1) approximation
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
 
-  // Show brand name after writing completes
+  // Animate SVG rect attributes via requestAnimationFrame
+  // (Web Animations API doesn't reliably animate SVG geometry attributes)
+  function animateRect(rect, dir, targetW, targetH, duration) {
+    const startTime = performance.now();
+
+    // Set initial full dimension for the non-animated axis
+    if (dir === 'ltr') {
+      rect.setAttribute('height', targetH);
+      rect.setAttribute('width', '0');
+    } else {
+      rect.setAttribute('width', targetW);
+      rect.setAttribute('height', '0');
+    }
+
+    function tick(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutCubic(progress);
+
+      if (dir === 'ltr') {
+        rect.setAttribute('width', Math.max(0, eased * targetW));
+      } else {
+        rect.setAttribute('height', Math.max(0, eased * targetH));
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Schedule each phase's animation
+  clipRects.forEach((rect, i) => {
+    const dir = rect.getAttribute('data-dir');
+    const t = targets[i + 1];
+    const s = schedule[i];
+    if (!t || !s) return;
+
+    setTimeout(() => {
+      animateRect(rect, dir, t.w, t.h, s.dur);
+    }, s.start);
+  });
+
+  // Total writing time
+  const lastPhase = schedule[schedule.length - 1];
+  const allWrittenAt = lastPhase.start + lastPhase.dur;
+
+  // Show brand name after brief pause
   setTimeout(() => {
     if (brand) brand.classList.add('is-visible');
-  }, allWrittenAt + PAUSE_AFTER);
+  }, allWrittenAt + 500);
 
   // Fade out overlay
-  const totalTime = allWrittenAt + PAUSE_AFTER + BRAND_DELAY + 800;
   setTimeout(() => {
     overlay.classList.add('is-done');
     setTimeout(() => { overlay.remove(); }, 1100);
-  }, totalTime);
+  }, allWrittenAt + 1400);
 }
 
 /* ============================================================

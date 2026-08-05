@@ -83,12 +83,9 @@
   filter: blur(0.3px); /* 微かなにじみ感 */
 }
 
-/* Stroke phases — initial state: invisible */
+/* Stroke phases — clipped by their individual clipPath, JS animates the rect */
 .stroke-phase {
-  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.stroke-phase.is-written {
-  opacity: 1 !important;
+  /* No CSS transition needed — Web Animations API drives the clip rects */
 }
 
 /* Brand name under the character */
