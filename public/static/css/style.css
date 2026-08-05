@@ -49,8 +49,9 @@
 }
 
 /* ============================================================
-   BRUSH LOADING — 筆文字「夢」ローディングアニメーション
-   実画像トレース版：fill + clipPath ワイプで墨が落ちる表現
+   BRUSH LOADING — 筆文字「夢」書き順アニメーション
+   9フェーズのストロークを順次 opacity 0→1 で表示し、
+   実際に筆で一画ずつ書いているように見せる
    ============================================================ */
 .brush-loading {
   position: fixed;
@@ -80,6 +81,14 @@
   height: auto;
   overflow: visible;
   filter: blur(0.3px); /* 微かなにじみ感 */
+}
+
+/* Stroke phases — initial state: invisible */
+.stroke-phase {
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stroke-phase.is-written {
+  opacity: 1 !important;
 }
 
 /* Brand name under the character */

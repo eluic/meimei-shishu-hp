@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   BRUSH LOADING — 筆文字「夢」ワイプアニメーション制御
-   clipPath rect の height をアニメーションし、
-   墨が上から下へ流れ落ちるように見せる
+   BRUSH LOADING — 筆文字「夢」書き順アニメーション制御
+   9フェーズのストロークを書き順に沿って順次 opacity 0→1 表示し、
+   実際に筆で一画ずつ書いているように見せる
    ============================================================ */
 function initBrushLoading() {
   const overlay = document.getElementById('brush-loading');
@@ -31,52 +31,33 @@ function initBrushLoading() {
     return;
   }
 
-  const wipeRects = overlay.querySelectorAll('.wipe-rect');
+  const phases = overlay.querySelectorAll('.stroke-phase');
   const brand = overlay.querySelector('.brush-loading-brand');
+  const totalPhases = phases.length; // 9
 
-  // Animation timeline (ms)
-  const PHASE_GAP = 400;   // gap between phases
-  const WIPE_DURATION = 1200; // each wipe animation duration
+  // Timing (ms)
+  const INITIAL_DELAY = 400;   // 最初の一画を始めるまでの間
+  const STROKE_INTERVAL = 320; // 各画の間隔 — 筆を運ぶテンポ
+  const PAUSE_AFTER = 800;     // 全画完了後、余韻を残す
+  const BRAND_DELAY = 600;     // ブランド名表示までの追加待ち
 
-  // Phase 0: 上部 (top) — starts at 300ms
-  // Phase 1: 本体 (body) — starts after top completes + gap
-  // Phase 2: 内部白抜き (inner) — starts after body begins + small delay
-
-  const phases = [
-    { delay: 300,  duration: WIPE_DURATION },       // top
-    { delay: 300 + WIPE_DURATION * 0.6 + PHASE_GAP, duration: WIPE_DURATION * 1.4 }, // body (longer, bigger)
-    { delay: 300 + WIPE_DURATION * 0.6 + PHASE_GAP + 600, duration: WIPE_DURATION * 1.0 }, // inner holes
-  ];
-
-  // Animate each wipe-rect
-  wipeRects.forEach((rect, i) => {
-    const phase = phases[i] || phases[phases.length - 1];
-    const targetH = parseFloat(rect.getAttribute('data-target-h') || '500');
-
+  // Phase ごとに順次表示
+  phases.forEach((phase, i) => {
     setTimeout(() => {
-      // Use Web Animations API for smooth interpolation
-      rect.animate(
-        [
-          { height: '0px' },
-          { height: targetH + 'px' }
-        ],
-        {
-          duration: phase.duration,
-          easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
-          fill: 'forwards'
-        }
-      );
-    }, phase.delay);
+      phase.classList.add('is-written');
+    }, INITIAL_DELAY + i * STROKE_INTERVAL);
   });
 
-  // Show brand name after most of the animation
-  const brandDelay = phases[1].delay + phases[1].duration * 0.7;
+  // 全フェーズ表示完了時刻
+  const allWrittenAt = INITIAL_DELAY + (totalPhases - 1) * STROKE_INTERVAL + 350;
+
+  // Show brand name after writing completes
   setTimeout(() => {
     if (brand) brand.classList.add('is-visible');
-  }, brandDelay);
+  }, allWrittenAt + PAUSE_AFTER);
 
-  // Fade out overlay after everything completes
-  const totalTime = brandDelay + 1200; // +1.2s to appreciate
+  // Fade out overlay
+  const totalTime = allWrittenAt + PAUSE_AFTER + BRAND_DELAY + 800;
   setTimeout(() => {
     overlay.classList.add('is-done');
     setTimeout(() => { overlay.remove(); }, 1100);
