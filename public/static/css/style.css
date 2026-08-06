@@ -5,27 +5,29 @@
    ============================================================ */
 
 :root {
-  /* Brand Colors — 和モダン : Warm, Muted, Sophisticated */
-  --color-primary: #8b7355;          /* 落ち着いた胡桃色 — warm brown */
-  --color-primary-dark: #6e5a43;
-  --color-primary-light: #a38d72;
-  --color-primary-pale: rgba(139, 115, 85, 0.06);
-  --color-accent: #c4a87a;           /* 淡い金・砂金色 */
-  --color-accent-light: #d4bc94;
-  --color-accent-pale: rgba(196, 168, 122, 0.10);
-  --color-gold: #b8a07a;             /* 静かな金色 */
-  --color-gold-light: #c9b48f;
-  --color-sage: #8a9a87;             /* 抹茶色 — wa accent */
-  --color-base: #fefcf9;             /* 生成り白 — cotton canvas */
-  --color-base-alt: #f7f3ed;         /* 温かいリネン色 */
-  --color-base-dark: #efe9e0;
-  --color-text: #3d3832;             /* 墨色系テキスト */
-  --color-text-light: #6b635a;
-  --color-text-muted: #9e958b;
+  /* Brand Colors — 3-color system: White + Black + Accent Pink */
+  --color-primary: #AA5967;          /* 差し色 — ローズピンク */
+  --color-primary-dark: #8e4755;
+  --color-primary-light: #c06e7c;
+  --color-primary-pale: rgba(170, 89, 103, 0.06);
+  --color-accent: #AA5967;           /* 差し色（primary と統一） */
+  --color-accent-light: #c06e7c;
+  --color-accent-pale: rgba(170, 89, 103, 0.08);
+  --color-gold: #AA5967;             /* 旧ゴールド → 差し色に統一 */
+  --color-gold-light: #c06e7c;
+  --color-sage: #AA5967;             /* 旧抹茶 → 差し色に統一 */
+  --color-base: #ffffff;             /* メインカラー — 白 */
+  --color-base-alt: #f7f7f7;         /* 極薄グレー（セクション背景区別用） */
+  --color-base-dark: #eeeeee;
+  --color-text: #000000;             /* メインテキスト — 黒 */
+  --color-text-light: #383838;       /* サブテキスト — ダークグレー */
+  --color-text-muted: #888888;       /* 補助テキスト — グレー */
   --color-white: #ffffff;
-  --color-black: #2c2824;            /* 深い墨色 */
-  --color-border: rgba(60, 56, 50, 0.10);
-  --color-border-light: rgba(60, 56, 50, 0.06);
+  --color-black: #000000;            /* 見出し・ヘッダー背景 */
+  --color-header: #000000;           /* トップメニュー背景 */
+  --color-footer: #383838;           /* フッター背景 */
+  --color-border: rgba(0, 0, 0, 0.10);
+  --color-border-light: rgba(0, 0, 0, 0.06);
   --color-divider: var(--color-accent);
 
   /* Typography */
@@ -386,7 +388,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-block { width: 100%; justify-content: center; }
 
 /* ============================================================
-   HEADER — Dark, matching footer for unified brand feel
+   HEADER — Black #000000
    ============================================================ */
 #site-header {
   position: fixed;
@@ -394,7 +396,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(44, 40, 36, 0.97);
+  background: rgba(0, 0, 0, 0.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -447,7 +449,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   right: 50%;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--color-white);
   transition: all var(--transition);
 }
 .nav-list a:hover::after,
@@ -494,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(44, 40, 36, 0.98);
+  background: rgba(0, 0, 0, 0.98);
   backdrop-filter: blur(12px);
 }
 .mobile-nav-overlay.active { display: flex; align-items: center; justify-content: center; }
@@ -601,7 +603,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(44, 40, 36, 0.45);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -820,7 +822,7 @@ h1, h2, h3, h4, h5, h6 {
 .plan-exhibit--featured .plan-exhibit-visual {
   position: relative;
   overflow: hidden;
-  background: var(--color-base-alt);
+  background: var(--color-base);
   margin-bottom: 0;
 }
 .plan-exhibit--featured .plan-exhibit-visual img {
@@ -860,7 +862,7 @@ h1, h2, h3, h4, h5, h6 {
 .plan-exhibit--sub .plan-exhibit-visual {
   position: relative;
   overflow: hidden;
-  background: var(--color-base-alt);
+  background: var(--color-base);
   margin-bottom: 0;
 }
 .plan-exhibit--sub .plan-exhibit-visual img {
@@ -1030,7 +1032,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .product-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(44, 40, 36, 0.07);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
   color: var(--color-text);
 }
 
@@ -1053,7 +1055,7 @@ h1, h2, h3, h4, h5, h6 {
 .product-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(44, 40, 36, 0.12);
+  background: rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1066,7 +1068,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 24px;
   border: 1px solid rgba(255,255,255,0.7);
   letter-spacing: 1.5px;
-  background: rgba(44, 40, 36, 0.35);
+  background: rgba(0, 0, 0, 0.35);
 }
 .product-card:hover .product-overlay { opacity: 1; }
 
@@ -1197,7 +1199,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   padding: 40px 16px 16px;
-  background: linear-gradient(transparent, rgba(44, 40, 36, 0.35));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.35));
   color: var(--color-white);
   font-size: 0.82rem;
   font-weight: 300;
@@ -1220,7 +1222,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   inset: 0;
   z-index: 2000;
-  background: rgba(44, 40, 36, 0.94);
+  background: rgba(0, 0, 0, 0.94);
   align-items: center;
   justify-content: center;
 }
@@ -1399,7 +1401,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   CTA SECTION — Warm deep tone, not harsh black
+   CTA SECTION — Black accent band
    ============================================================ */
 .cta-section {
   background: var(--color-black);
@@ -2161,10 +2163,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   FOOTER — Warm charcoal, not harsh black
+   FOOTER — Dark grey #383838
    ============================================================ */
 #site-footer {
-  background: var(--color-black);
+  background: var(--color-footer);
   color: rgba(255,255,255,0.75);
   padding: 0;
 }
@@ -2507,8 +2509,8 @@ main {
   outline-offset: 2px;
 }
 
-/* Selection color — warm primary */
+/* Selection color — accent pink */
 ::selection {
-  background: rgba(196, 168, 122, 0.15);
+  background: rgba(170, 89, 103, 0.15);
   color: var(--color-text);
 }
