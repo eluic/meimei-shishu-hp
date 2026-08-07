@@ -35,6 +35,8 @@
   --font-sans: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
   --letter-spacing-heading: 0.18em;
   --line-height-body: 2;
+  --font-size-body: 20px;
+  --font-size-body-sm: 18px;
 
   /* Spacing — generous, gallery-like whitespace */
   --spacing-section: 110px;
@@ -270,7 +272,7 @@ h1, h2, h3, h4, h5, h6 {
 .section-subtitle {
   text-align: center;
   color: var(--color-text-light);
-  font-size: 0.88rem;
+  font-size: var(--font-size-body);
   margin-bottom: 52px;
   line-height: var(--line-height-body);
   font-weight: 300;
@@ -279,7 +281,7 @@ h1, h2, h3, h4, h5, h6 {
 .section-intro {
   text-align: center;
   color: var(--color-text-light);
-  font-size: 0.92rem;
+  font-size: var(--font-size-body);
   line-height: 2.4;
   margin-bottom: 52px;
   font-weight: 300;
@@ -574,7 +576,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .catchcopy-text {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 300;
   letter-spacing: 0.15em;
   line-height: 2.4;
@@ -646,7 +648,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .brand-message-text {
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: var(--font-size-body);
   line-height: 2.6;
   color: var(--color-text);
   letter-spacing: 0.08em;
@@ -702,7 +704,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 .pickup-desc {
-  font-size: 0.88rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text-light);
   line-height: var(--line-height-body);
   margin-bottom: 24px;
@@ -748,7 +750,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .concept-gallery-caption {
   font-family: var(--font-serif);
-  font-size: 0.88rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text);
   letter-spacing: 0.1em;
   line-height: 1.9;
@@ -806,7 +808,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .plan-gallery-lead {
   font-family: var(--font-serif);
-  font-size: 0.92rem;
+  font-size: var(--font-size-body);
   font-weight: 300;
   color: var(--color-text-light);
   letter-spacing: 0.1em;
@@ -911,7 +913,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .plan-exhibit-includes {
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: var(--font-size-body-sm);
   font-weight: 300;
   color: var(--color-text-muted);
   letter-spacing: 0.06em;
@@ -1076,7 +1078,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px 18px;
 }
 .product-info h3 {
-  font-size: 0.86rem;
+  font-size: var(--font-size-body-sm);
   font-family: var(--font-serif);
   font-weight: 400;
   margin-bottom: 6px;
@@ -1084,7 +1086,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
 }
 .product-desc {
-  font-size: 0.78rem;
+  font-size: 16px;
   color: var(--color-text-light);
   margin-bottom: 10px;
   display: -webkit-box;
@@ -1303,7 +1305,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 .pricing-desc {
-  font-size: 0.82rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text-light);
   margin-bottom: 28px;
   font-weight: 300;
@@ -1327,7 +1329,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 10px;
   padding: 9px 0;
-  font-size: 0.82rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text-light);
   border-bottom: 1px solid var(--color-border-light);
   font-weight: 300;
@@ -1383,7 +1385,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 4px;
 }
 .voice-content p {
-  font-size: 0.82rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text-light);
   line-height: 2.1;
   font-weight: 300;
@@ -1433,7 +1435,7 @@ h1, h2, h3, h4, h5, h6 {
 .cta-inner p {
   color: rgba(255,255,255,0.45);
   margin-bottom: 40px;
-  font-size: 0.86rem;
+  font-size: var(--font-size-body-sm);
   font-weight: 300;
 }
 .cta-buttons {
@@ -1478,7 +1480,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
 }
 .instagram-desc {
-  font-size: 0.82rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text-light);
   margin-bottom: 40px;
   font-weight: 300;
@@ -1536,7 +1538,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-light);
   margin-bottom: 20px;
   line-height: 2.3;
-  font-size: 0.92rem;
+  font-size: var(--font-size-body);
   font-weight: 300;
 }
 .about-text strong { color: var(--color-primary); font-weight: 500; }
@@ -1575,7 +1577,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-black);
   letter-spacing: 0.1em;
 }
-.value-card p { font-size: 0.8rem; color: var(--color-text-light); line-height: 2; font-weight: 300; }
+.value-card p { font-size: 16px; color: var(--color-text-light); line-height: 2; font-weight: 300; }
 
 .process-gallery {
   display: grid;
@@ -1620,7 +1622,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 .concept-lead {
-  font-size: 1rem;
+  font-size: var(--font-size-body);
   line-height: 2.3;
   margin-bottom: 24px;
   color: var(--color-text-light);
@@ -1699,7 +1701,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-light);
   margin-bottom: 32px;
   line-height: 2.2;
-  font-size: 0.92rem;
+  font-size: var(--font-size-body);
   font-weight: 300;
 }
 
@@ -1856,7 +1858,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-black);
   letter-spacing: 0.1em;
 }
-.step-content p { font-size: 0.86rem; color: var(--color-text-light); line-height: 2.1; font-weight: 300; }
+.step-content p { font-size: var(--font-size-body-sm); color: var(--color-text-light); line-height: 2.1; font-weight: 300; }
 
 .step-connector {
   text-align: center;
@@ -1890,7 +1892,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   padding-left: 22px;
   margin-bottom: 12px;
-  font-size: 0.86rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text-light);
   line-height: 2;
   font-weight: 300;
@@ -1928,7 +1930,7 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   cursor: pointer;
   text-align: left;
-  font-size: 0.88rem;
+  font-size: var(--font-size-body);
   font-weight: 400;
   color: var(--color-text);
   font-family: var(--font-sans);
@@ -1981,7 +1983,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.72rem;
 }
 .faq-answer-inner p {
-  font-size: 0.86rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text-light);
   line-height: 2.1;
   font-weight: 300;
@@ -1991,7 +1993,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   margin-top: 52px;
 }
-.faq-cta p { margin-bottom: 20px; color: var(--color-text-light); font-size: 0.88rem; font-weight: 300; }
+.faq-cta p { margin-bottom: 20px; color: var(--color-text-light); font-size: var(--font-size-body); font-weight: 300; }
 
 /* ============================================================
    CONTACT — Clean, warm form styling
@@ -2114,7 +2116,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-black);
   letter-spacing: 0.08em;
 }
-.contact-method p { font-size: 0.8rem; color: var(--color-text-light); line-height: 1.9; font-weight: 300; }
+.contact-method p { font-size: var(--font-size-body-sm); color: var(--color-text-light); line-height: 1.9; font-weight: 300; }
 
 @media (max-width: 768px) {
   .contact-form { padding: 28px 20px; }
@@ -2135,7 +2137,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .legal-content h2 { font-size: 1.05rem; margin: 32px 0 12px; font-weight: 400; }
 .legal-content h3 { font-size: 0.92rem; margin: 24px 0 10px; font-family: var(--font-serif); font-weight: 400; }
-.legal-content p { color: var(--color-text-light); margin-bottom: 14px; line-height: 2.1; font-size: 0.9rem; font-weight: 300; }
+.legal-content p { color: var(--color-text-light); margin-bottom: 14px; line-height: 2.1; font-size: var(--font-size-body-sm); font-weight: 300; }
 
 .legal-table {
   width: 100%;
@@ -2457,7 +2459,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-white);
 }
 .news-title {
-  font-size: 0.86rem;
+  font-size: var(--font-size-body-sm);
   color: var(--color-text);
   line-height: 1.8;
   font-weight: 300;
