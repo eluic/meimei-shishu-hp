@@ -336,8 +336,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline-brand {
-  background: transparent;
-  color: var(--color-black);
+  background: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-black);
 }
 .btn-outline-brand:hover {
