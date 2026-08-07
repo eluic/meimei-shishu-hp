@@ -1529,7 +1529,7 @@ h1, h2, h3, h4, h5, h6 {
 .ig-follow-btn {
   display: inline-block;
   padding: 7px 24px;
-  background: var(--color-primary);
+  background: var(--color-black);
   color: var(--color-white);
   font-size: 13px;
   font-weight: 600;
@@ -1540,7 +1540,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: background var(--transition);
 }
 .ig-follow-btn:hover {
-  background: var(--color-primary-dark);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
