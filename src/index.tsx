@@ -288,7 +288,7 @@ app.get('/', (c) => {
     <!-- Featured: Standard Plan (人気No.1) — 大きくフィーチャー -->
     <div class="plan-exhibit plan-exhibit--featured">
       <div class="plan-exhibit-visual">
-        <img src="/static/images/hero/hero-main.jpg" alt="スタンダードプラン — 赤ちゃんと命名刺繍フレーム" loading="lazy">
+        <img src="/static/images/hero/plan-standard.jpg" alt="スタンダードプラン — 命名刺繍フレームとギフト" loading="lazy">
       </div>
       <div class="plan-exhibit-caption">
         <span class="plan-exhibit-badge">人気 No.1</span>
