@@ -1450,78 +1450,252 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   INSTAGRAM SECTION — Clean, warm
+   INSTAGRAM SECTION — プロフィール風レイアウト
    ============================================================ */
 .instagram-section {
   padding: var(--spacing-section) 0;
-  text-align: center;
   background: var(--color-base);
 }
-.instagram-icon {
-  margin-bottom: 16px;
-}
-.instagram-icon svg {
-  width: 26px;
-  height: 26px;
-  color: var(--color-text-light);
-}
-.instagram-handle {
-  font-family: var(--font-serif);
-  font-size: 0.86rem;
-  color: var(--color-text);
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  font-weight: 300;
-}
-.instagram-handle a {
-  color: var(--color-text);
-}
-.instagram-handle a:hover {
-  color: var(--color-primary);
-}
-.instagram-desc {
-  font-size: var(--font-size-body-sm);
-  color: var(--color-text-light);
-  margin-bottom: 40px;
-  font-weight: 300;
+
+.ig-profile {
+  max-width: 680px;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
 }
 
-.instagram-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  max-width: 780px;
-  margin: 0 auto;
+/* --- Profile Header --- */
+.ig-profile-header {
+  display: flex;
+  gap: 36px;
+  padding: 36px 36px 24px;
+  align-items: flex-start;
 }
-.instagram-item {
+
+.ig-avatar {
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
   overflow: hidden;
-  position: relative;
-  aspect-ratio: 1;
+  border: 2px solid var(--color-border);
 }
-.instagram-item img {
+.ig-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1s ease;
-}
-.instagram-item:hover img {
-  transform: scale(1.03);
-}
-.instagram-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--color-black);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-.instagram-item:hover::after {
-  opacity: 0.06;
 }
 
+.ig-profile-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Username row */
+.ig-username-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.ig-username {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--color-black);
+  letter-spacing: 0;
+}
+.ig-follow-btn {
+  display: inline-block;
+  padding: 7px 24px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: background var(--transition);
+}
+.ig-follow-btn:hover {
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+/* Stats */
+.ig-stats {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 16px;
+}
+.ig-stat {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-text-light);
+  letter-spacing: 0;
+}
+.ig-stat strong {
+  font-weight: 600;
+  color: var(--color-black);
+  margin-right: 3px;
+}
+
+/* Bio */
+.ig-bio {
+  line-height: 1.7;
+}
+.ig-bio-name {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: 2px;
+}
+.ig-bio-text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+/* Bio mobile (hidden on desktop) */
+.ig-bio-mobile {
+  display: none;
+  padding: 0 36px 20px;
+  line-height: 1.7;
+}
+.ig-bio-mobile .ig-bio-name {
+  font-size: 14px;
+}
+.ig-bio-mobile .ig-bio-text {
+  font-size: 13px;
+}
+
+/* --- Grid Tab --- */
+.ig-tabs {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--color-border);
+}
+.ig-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 20px;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--color-black);
+  margin-top: -1px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-black);
+  cursor: default;
+}
+.ig-tab svg {
+  opacity: 0.8;
+}
+
+/* --- Posts Grid (3 columns, no gap = Instagram style) --- */
+.ig-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+.ig-post-item {
+  display: block;
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.ig-post-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+.ig-post-item:hover img {
+  opacity: 0.85;
+}
+
+/* --- Footer link --- */
+.ig-profile-footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--color-border);
+}
+.ig-view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color var(--transition);
+}
+.ig-view-link:hover {
+  color: var(--color-primary-dark);
+}
+.ig-view-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Responsive --- */
 @media (max-width: 768px) {
-  .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+  .ig-profile-header {
+    padding: 24px 20px 12px;
+    gap: 20px;
+    align-items: center;
+  }
+  .ig-avatar {
+    width: 72px;
+    height: 72px;
+  }
+  /* On mobile: hide bio inside meta, show below */
+  .ig-bio {
+    display: none;
+  }
+  .ig-bio-mobile {
+    display: block;
+    padding: 0 20px 16px;
+  }
+  .ig-username {
+    font-size: 18px;
+  }
+  .ig-follow-btn {
+    padding: 6px 18px;
+    font-size: 12px;
+  }
+  .ig-stats {
+    gap: 0;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .ig-stat {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ig-stat strong {
+    margin-right: 0;
+  }
+  .ig-posts-grid {
+    gap: 2px;
+  }
+  .ig-profile-footer {
+    padding: 16px;
+  }
 }
 
 /* ============================================================

@@ -434,18 +434,57 @@ app.get('/', (c) => {
     </div>
   </section>
 
-  <!-- 7. Instagram Section -->
+  <!-- 7. Instagram Section — プロフィール風 -->
   <section class="instagram-section">
     <div class="container">
-      <div class="instagram-icon">${instagramSvg(32)}</div>
-      <p class="instagram-handle"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">@nofy_okinawa</a></p>
-      <p class="instagram-desc">NOFYの最新作品や制作の様子をInstagramで発信しています。</p>
-      <div class="instagram-grid">
-        ${products.slice(0, 4).map(p => `
-        <div class="instagram-item">
-          <img src="${p.image}" alt="${p.name}" loading="lazy">
+      <div class="ig-profile">
+        <!-- Profile Header -->
+        <div class="ig-profile-header">
+          <div class="ig-avatar">
+            <img src="/static/images/hero/hero-main.jpg" alt="NOFY" loading="lazy">
+          </div>
+          <div class="ig-profile-meta">
+            <div class="ig-username-row">
+              <span class="ig-username">nofy_okinawa</span>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="ig-follow-btn">フォローする</a>
+            </div>
+            <div class="ig-stats">
+              <span class="ig-stat"><strong>128</strong>投稿</span>
+              <span class="ig-stat"><strong>1,240</strong>フォロワー</span>
+              <span class="ig-stat"><strong>86</strong>フォロー中</span>
+            </div>
+            <div class="ig-bio">
+              <p class="ig-bio-name">〜NOFY〜 命名刺繍</p>
+              <p class="ig-bio-text">沖縄から届ける、世界にひとつの命名刺繍 🌺<br>いつまでも飾っておきたくなる命名を<br>ご注文はDMまたはHPより</p>
+            </div>
+          </div>
         </div>
-        `).join('')}
+        <!-- Bio (mobile: displayed below header) -->
+        <div class="ig-bio-mobile">
+          <p class="ig-bio-name">〜NOFY〜 命名刺繍</p>
+          <p class="ig-bio-text">沖縄から届ける、世界にひとつの命名刺繍 🌺<br>いつまでも飾っておきたくなる命名を<br>ご注文はDMまたはHPより</p>
+        </div>
+        <!-- Grid Tab -->
+        <div class="ig-tabs">
+          <button class="ig-tab active" aria-label="投稿一覧">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="1" width="9" height="9"/><rect x="14" y="1" width="9" height="9"/><rect x="1" y="14" width="9" height="9"/><rect x="14" y="14" width="9" height="9"/></svg>
+            投稿
+          </button>
+        </div>
+        <!-- Posts Grid (3-column, Instagram style) -->
+        <div class="ig-posts-grid">
+          ${products.slice(0, 9).map(p => `
+          <a href="/products/${p.id}" class="ig-post-item">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+          </a>
+          `).join('')}
+        </div>
+        <!-- View on Instagram link -->
+        <div class="ig-profile-footer">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="ig-view-link">
+            ${instagramSvg(16)} Instagramで見る
+          </a>
+        </div>
       </div>
     </div>
   </section>
