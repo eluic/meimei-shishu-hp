@@ -270,8 +270,13 @@ app.get('/', (c) => {
   <section class="catchcopy-bridge">
     <div class="container">
       <p class="catchcopy-text">お子さまの命名を、一生の記念に。<br>心を込めて丁寧に仕上げる命名刺繍。<br>ご自宅用にも、出産祝いにも。</p>
-      <div class="catchcopy-photo">
-        <img src="/static/images/hero/living-room.jpg" alt="リビングに飾られた命名刺繍" loading="lazy">
+      <div class="catchcopy-photos">
+        <div class="catchcopy-photo">
+          <img src="/static/images/hero/living-room.jpg" alt="リビングに飾られた命名刺繍" loading="lazy">
+        </div>
+        <div class="catchcopy-photo">
+          <img src="/static/images/hero/gift-box.jpg" alt="ギフトボックス入り命名刺繍" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
