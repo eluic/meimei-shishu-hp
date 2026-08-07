@@ -568,27 +568,11 @@ h1, h2, h3, h4, h5, h6 {
   background-position: center;
 }
 
-/* Catchcopy bridge section — リビング写真背景 + テキストオーバーレイ */
+/* Catchcopy bridge section */
 .catchcopy-bridge {
-  position: relative;
-  padding: 120px 0;
+  padding: 100px 0;
   text-align: center;
-  overflow: hidden;
-}
-.catchcopy-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-}
-.catchcopy-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-}
-.catchcopy-content {
-  position: relative;
-  z-index: 1;
+  background: var(--color-white);
 }
 .catchcopy-text {
   font-family: var(--font-serif);
@@ -596,12 +580,21 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   letter-spacing: 0.15em;
   line-height: 2.4;
-  color: var(--color-white);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  color: var(--color-text);
+}
+.catchcopy-photo {
+  margin-top: 48px;
+}
+.catchcopy-photo img {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border-radius: 4px;
 }
 @media (max-width: 768px) {
-  .catchcopy-bridge { padding: 80px 0; }
+  .catchcopy-bridge { padding: 64px 0; }
   .catchcopy-text { font-size: 1.05rem; letter-spacing: 0.1em; line-height: 2.2; }
+  .catchcopy-photo { margin-top: 32px; }
 }
 
 /* ============================================================

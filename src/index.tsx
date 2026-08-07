@@ -266,12 +266,13 @@ app.get('/', (c) => {
   <section id="hero-section" class="hero" style="background-image: url('/static/images/hero/hero-main.jpg')">
   </section>
 
-  <!-- Catchcopy Bridge Section — リビング写真背景 -->
+  <!-- Catchcopy Bridge Section -->
   <section class="catchcopy-bridge">
-    <div class="catchcopy-bg" style="background-image: url('/static/images/hero/living-room.jpg')"></div>
-    <div class="catchcopy-overlay"></div>
-    <div class="container catchcopy-content">
+    <div class="container">
       <p class="catchcopy-text">お子さまの命名を、一生の記念に。<br>心を込めて丁寧に仕上げる命名刺繍。<br>ご自宅用にも、出産祝いにも。</p>
+      <div class="catchcopy-photo">
+        <img src="/static/images/hero/living-room.jpg" alt="リビングに飾られた命名刺繍" loading="lazy">
+      </div>
     </div>
   </section>
 
