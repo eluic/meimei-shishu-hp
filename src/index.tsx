@@ -322,7 +322,7 @@ app.get('/', (c) => {
 
       <a href="/products" class="plan-exhibit plan-exhibit--sub">
         <div class="plan-exhibit-visual">
-          <img src="/static/images/hero/hero-04.jpg" alt="プレミアムプラン — 額縁入り命名刺繍作品" loading="lazy">
+          <img src="/static/images/hero/plan-premium.jpg" alt="プレミアムプラン — 命名刺繍フレーム" loading="lazy">
         </div>
         <div class="plan-exhibit-caption">
           <span class="plan-exhibit-label">Premium Plan</span>
