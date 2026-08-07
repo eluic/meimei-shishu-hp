@@ -275,7 +275,7 @@ app.get('/', (c) => {
           <img src="/static/images/hero/living-room.jpg" alt="リビングに飾られた命名刺繍" loading="lazy">
         </div>
         <div class="catchcopy-photo">
-          <img src="/static/images/hero/gift-box.jpg" alt="ギフトボックス入り命名刺繍" loading="lazy">
+          <img src="/static/images/hero/plan-standard.jpg" alt="命名刺繍フレームとギフト" loading="lazy">
         </div>
       </div>
     </div>
@@ -293,7 +293,7 @@ app.get('/', (c) => {
     <!-- Featured: Standard Plan (人気No.1) — 大きくフィーチャー -->
     <div class="plan-exhibit plan-exhibit--featured">
       <div class="plan-exhibit-visual">
-        <img src="/static/images/hero/plan-standard.jpg" alt="スタンダードプラン — 命名刺繍フレームとギフト" loading="lazy">
+        <img src="/static/images/hero/gift-box.jpg" alt="スタンダードプラン — ギフトボックス入り命名刺繍" loading="lazy">
       </div>
       <div class="plan-exhibit-caption">
         <span class="plan-exhibit-badge">人気 No.1</span>
