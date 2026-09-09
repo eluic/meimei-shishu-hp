@@ -543,6 +543,14 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   background-position: center;
 }
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 3 / 2;
+    background-position: center center;
+  }
+}
 
 /* Catchcopy bridge section */
 .catchcopy-bridge {
