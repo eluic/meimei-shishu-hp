@@ -174,61 +174,10 @@ const wrapPage = (head: string, headerHtml: string, body: string, footerHtml: st
 <head>${head}</head>
 <body>
 ${opts?.loading ? `
-<!-- Brush Loading — 筆文字「夢」書き順アニメーション -->
-<div id="brush-loading" class="brush-loading" aria-hidden="true">
-  <div class="brush-loading-inner">
-    <svg class="brush-svg" viewBox="0 0 600 728" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <!-- Each clipPath has a rect that JS will animate from 0 to full size -->
-        <!-- Direction: ltr=left-to-right, ttb=top-to-bottom, dtl=diagonal-top-left -->
-        <clipPath id="cp1"><rect class="clip-rect" data-dir="ltr" x="180" y="78" width="0" height="50"/></clipPath>
-        <clipPath id="cp2"><rect class="clip-rect" data-dir="ttb" x="174" y="56" width="14" height="0"/></clipPath>
-        <clipPath id="cp3"><rect class="clip-rect" data-dir="ttb" x="181" y="26" width="206" height="0"/></clipPath>
-        <clipPath id="cp4"><rect class="clip-rect" data-dir="ltr" x="96" y="121" width="0" height="40"/></clipPath>
-        <clipPath id="cp5"><rect class="clip-rect" data-dir="ttb" x="97" y="154" width="398" height="0"/></clipPath>
-        <clipPath id="cp6"><rect class="clip-rect" data-dir="ltr" x="125" y="196" width="0" height="35"/></clipPath>
-        <clipPath id="cp7"><rect class="clip-rect" data-dir="ltr" x="148" y="224" width="0" height="64"/></clipPath>
-        <clipPath id="cp8"><rect class="clip-rect" data-dir="ttb" x="26" y="281" width="145" height="0"/></clipPath>
-        <clipPath id="cp9"><rect class="clip-rect" data-dir="ttb" x="162" y="281" width="412" height="0"/></clipPath>
-      </defs>
-      <!-- Phase 1: 艹 横画 (left→right) -->
-      <g class="stroke-phase" data-phase="1" clip-path="url(#cp1)">
-        <path d="M450.7,124.1L189.8,124.1L185.2,81.8L217.5,81.4L235.7,101.0L239.6,121.9L263.0,119.8L285.8,81.4L289.7,81.8L275.5,101.7L268.7,120.5L312.8,119.1L315.3,108.8L313.5,81.4L393.8,81.4L393.5,100.2L387.4,120.5L397.4,118.4L408.8,110.6L414.5,110.6L450.7,124.1Z" fill="var(--color-black)"/>
-      </g>
-      <!-- Phase 2: 艹 左縦 (downward) -->
-      <g class="stroke-phase" data-phase="2" clip-path="url(#cp2)">
-        <path d="M184.1,76.4L177.4,60.4L179.1,58.7L184.5,59.0L184.1,76.4Z" fill="var(--color-black)"/>
-      </g>
-      <!-- Phase 3: 艹 右縦 (downward) -->
-      <g class="stroke-phase" data-phase="3" clip-path="url(#cp3)">
-        <path d="M383.2,81.4L313.5,81.4L310.0,73.6L295.7,77.1L290.0,81.4L286.1,80.3L295.4,66.8L297.5,53.3L305.3,46.9L308.2,39.1L326.3,30.2L335.5,29.5L352.6,34.5L383.5,51.9L383.2,81.4Z M216.8,81.4L185.5,81.4L184.5,59.7L204.7,70.0L216.8,81.4Z" fill="var(--color-black)"/>
-      </g>
-      <!-- Phase 4: 罒 上横+両側 -->
-      <g class="stroke-phase" data-phase="4" clip-path="url(#cp4)">
-        <path d="M488.4,157.5L100.9,157.5L99.9,155.0L118.0,144.0L148.6,134.7L187.0,127.6L189.8,124.1L452.1,124.1L472.7,136.1L484.5,148.6L488.4,157.5Z" fill="var(--color-black)"/>
-      </g>
-      <!-- Phase 5: 罒 内部構造 -->
-      <g class="stroke-phase" data-phase="5" clip-path="url(#cp5)">
-        <path d="M295.7,198.7L274.8,198.4L290.0,176.7L247.4,191.6L246.7,198.7L128.0,198.7L101.3,167.8L104.1,161.4L100.6,157.8L488.4,157.5L490.9,163.5L489.5,176.3L479.9,193.7L452.8,195.9L435.1,184.5L419.4,182.4L414.5,171.7L400.9,172.4L394.5,166.0L358.3,165.3L343.4,166.7L316.4,190.9L295.7,198.7Z" fill="var(--color-black)"/>
-      </g>
-      <!-- Phase 6: 罒 下部 -->
-      <g class="stroke-phase" data-phase="6" clip-path="url(#cp6)">
-        <path d="M248.8,227.1L216.1,227.1L209.0,215.1L192.7,226.4L179.9,222.2L164.2,224.3L139.3,210.1L128.3,199.1L246.7,198.7L247.4,222.9L274.4,198.7L289.0,199.1L248.8,227.1Z M292.2,203.0L291.8,199.1L295.0,198.7L292.2,203.0Z M361.8,227.1L329.5,226.8L361.8,227.1Z" fill="var(--color-black)"/>
-      </g>
-      <!-- Phase 7: 冖 + 横画 (the dramatic wide sweep) -->
-      <g class="stroke-phase" data-phase="7" clip-path="url(#cp7)">
-        <path d="M233.2,242.1L228.2,241.4L215.8,227.5L247.4,227.1L233.2,242.1Z M425.8,284.0L358.3,284.0L364.0,258.4L324.9,254.2L307.5,255.9L318.1,268.7L323.5,284.0L282.9,284.0L278.0,261.3L255.2,269.1L227.5,284.0L152.8,284.0L153.9,276.6L151.1,273.7L162.8,267.0L190.5,274.1L235.3,249.2L293.6,230.7L320.6,227.1L369.7,227.1L400.9,234.3L417.7,245.3L427.6,274.4L425.8,284.0Z" fill="var(--color-black)"/>
-      </g>
-      <!-- Phase 8: 夕 左払い (sweeping down-left) -->
-      <g class="stroke-phase" data-phase="8" clip-path="url(#cp8)">
-        <path d="M166.4,334.5L161.7,322.8L156.8,318.5L157.5,313.5L151.1,306.4L156.8,292.2L156.8,285.8L152.1,284.0L166.7,284.4L166.4,334.5Z M54.7,522.9L46.2,517.9L36.3,516.5L31.6,511.9L29.5,494.8L34.5,475.6L30.2,468.5L37.3,463.5L37.3,458.6L54.7,442.6L72.5,443.3L114.5,410.6L166.4,378.6L166.7,434.4L142.2,444.7L87.4,478.1L75.0,494.1L70.7,513.3L54.7,522.9Z M121.6,557.7L114.8,556.0L141.5,541.4L166.7,519.7L166.4,547.8L164.2,544.9L155.0,547.8L147.9,545.6L121.6,557.7Z" fill="var(--color-black)"/>
-      </g>
-      <!-- Phase 9: 夕 右フレーム+下部払い (the biggest piece) -->
-      <g class="stroke-phase" data-phase="9" clip-path="url(#cp9)">
-        <path d="M167.1,691.4L165.3,658.3L207.9,619.9L241.4,576.6L232.1,546.0L215.0,530.4L216.1,527.9L221.4,528.2L218.2,525.7L198.3,531.4L172.7,549.2L166.7,547.4L166.7,518.3L188.7,476.3L196.6,447.9L200.8,442.9L200.1,433.0L205.1,435.1L204.7,425.5L209.4,428.7L206.2,422.7L166.7,434.4L166.7,378.2L203.0,356.9L202.6,349.4L182.0,355.8L169.5,343.4L166.7,336.3L167.1,284.0L226.1,284.0L209.4,297.2L218.2,323.1L225.0,319.2L223.6,312.1L227.1,302.1L225.0,297.2L227.8,294.3L227.5,286.9L239.6,291.1L244.5,284.0L248.5,297.2L260.9,307.5L281.2,288.6L282.2,284.0L323.5,284.0L325.2,298.6L323.1,306.4L311.0,319.9L331.3,329.5L339.5,324.9L357.6,284.0L426.2,284.4L424.8,289.4L401.7,313.2L357.6,344.4L351.9,345.9L341.9,341.6L334.1,342.3L278.0,356.5L251.7,367.2L196.9,397.1L302.8,371.5L384.6,361.5L437.2,362.2L476.3,367.2L498.3,373.6L509.7,371.5L533.2,380.7L546.3,392.4L567.7,422.3L569.8,435.1L564.8,448.6L558.1,455.4L545.3,461.8L526.1,466.0L511.8,466.0L479.1,457.5L425.1,463.9L423.7,460.3L405.9,456.8L386.7,458.2L377.5,455.4L354.7,458.9L353.7,461.4L367.2,484.1L367.9,494.8L338.7,581.5L333.1,585.1L323.1,600.7L312.1,611.8L295.0,624.6L271.6,650.2L253.8,663.7L236.0,667.9L191.9,690.0L167.1,691.4Z M243.5,459.3L270.9,450.4L277.3,439.7L287.2,442.6L290.0,439.7L302.1,440.4L305.0,438.3L319.2,439.7L353.3,456.8L420.1,423.4L451.4,404.2L456.8,398.1L443.6,392.1L418.0,387.8L371.1,387.8L301.4,398.5L214.7,421.2L231.4,439.4L239.2,457.1L243.5,459.3Z M265.5,545.3L276.2,522.5L281.5,480.2L244.5,491.6L233.5,510.5L223.6,520.4L243.8,536.4L265.5,545.3Z" fill="var(--color-black)"/>
-      </g>
-    </svg>
-    <span class="brush-loading-brand">〜NOFY〜</span>
+<!-- Logo Loading — フェードイン/アウト -->
+<div id="logo-loading" class="logo-loading" aria-hidden="true">
+  <div class="logo-loading-inner">
+    <img src="/static/images/nofy-logo.png" alt="〜NOFY〜" class="logo-loading-img">
   </div>
 </div>
 ` : ''}
